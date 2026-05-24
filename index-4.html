@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balima Web Developer — Développeur Web Freelance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bleu: #0057FF;
+      --bleu-clair: #4D8FFF;
+      --noir: #080C14;
+      --blanc: #F4F7FF;
+      --gris: #8A94A8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--noir); color: var(--blanc); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(ellipse at 20% 20%, rgba(0,87,255,0.12) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 80%, rgba(77,143,255,0.08) 0%, transparent 50%);
+      z-index: 0; pointer-events: none;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 48px; background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,87,255,0.15);
+    }
+    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--blanc); }
+    .logo span { color: var(--bleu-clair); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--gris); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blanc); }
+    .nav-cta { background: var(--bleu); color: var(--blanc) !important; padding: 10px 22px; border-radius: 6px; font-weight: 600 !important; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,87,255,0.12); border: 1px solid rgba(0,87,255,0.3); color: var(--bleu-clair); padding: 8px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 500; margin-bottom: 32px; width: fit-content; animation: fadeUp 0.6s ease both; }
+    .dot { width: 7px; height: 7px; background: var(--bleu-clair); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 10vw, 7rem); line-height: 0.95; letter-spacing: 1px; margin-bottom: 28px; animation: fadeUp 0.6s 0.1s ease both; }
+    h1 .accent { color: transparent; -webkit-text-stroke: 2px var(--bleu-clair); }
+    .hero-sub { font-size: 1.1rem; color: var(--gris); max-width: 520px; line-height: 1.7; margin-bottom: 48px; animation: fadeUp 0.6s 0.2s ease both; font-weight: 300; }
+    .hero-sub strong { color: var(--blanc); font-weight: 500; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+    .btn-primary { background: var(--bleu); color: var(--blanc); padding: 16px 36px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--bleu-clair); transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: var(--blanc); padding: 16px 36px; border-radius: 6px; font-weight: 500; font-size: 0.95rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); transition: border-color 0.2s, transform 0.2s; }
+    .btn-secondary:hover { border-color: var(--bleu-clair); transform: translateY(-2px); }
+
+    /* STATS */
+    .stats-bar { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: center; gap: 80px; padding: 48px 40px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--bleu-clair); letter-spacing: 1px; }
+    .stat-l { font-size: 0.82rem; color: var(--gris); margin-top: 4px; font-weight: 300; }
+
+    /* SECTIONS */
+    .section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
+    .section-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--bleu-clair); font-weight: 600; margin-bottom: 16px; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; margin-bottom: 60px; letter-spacing: 1px; }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
+    .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 40px 32px; transition: background 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--bleu); transform: scaleX(0); transition: transform 0.3s; }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: rgba(0,87,255,0.06); border-color: rgba(0,87,255,0.2); }
+    .service-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(0,87,255,0.2); line-height: 1; margin-bottom: 20px; }
+    .service-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 12px; }
+    .service-desc { font-size: 0.88rem; color: var(--gris); line-height: 1.7; margin-bottom: 24px; }
+    .service-price { display: inline-block; background: rgba(0,87,255,0.12); color: var(--bleu-clair); padding: 6px 14px; border-radius: 4px; font-size: 0.82rem; font-weight: 600; }
+
+    /* PROCESSUS */
+    .process { background: rgba(0,87,255,0.04); border-top: 1px solid rgba(0,87,255,0.1); border-bottom: 1px solid rgba(0,87,255,0.1); }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+    .step { display: flex; flex-direction: column; gap: 14px; }
+    .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; color: var(--bleu-clair); letter-spacing: 2px; }
+    .step-title { font-size: 1rem; font-weight: 600; }
+    .step-desc { font-size: 0.85rem; color: var(--gris); line-height: 1.6; font-weight: 300; }
+
+    /* À PROPOS */
+    .apropos { background: rgba(0,87,255,0.04); border-top: 1px solid rgba(0,87,255,0.1); border-bottom: 1px solid rgba(0,87,255,0.1); }
+    .apropos-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: center; }
+    .apropos-avatar { width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, var(--bleu), var(--bleu-clair)); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: white; letter-spacing: 2px; border: 3px solid rgba(77,143,255,0.3); }
+    .apropos-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 2px; margin-bottom: 8px; }
+    .apropos-role { color: var(--bleu-clair); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+    .apropos-bio { color: var(--gris); font-size: 0.92rem; line-height: 1.8; font-weight: 300; margin-bottom: 24px; }
+    .apropos-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag { background: rgba(0,87,255,0.1); border: 1px solid rgba(0,87,255,0.2); color: var(--bleu-clair); padding: 6px 14px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; }
+
+    /* PORTFOLIO */
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .portfolio-card { border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.3s, border-color 0.3s; }
+    .portfolio-card:hover { transform: translateY(-4px); border-color: rgba(0,87,255,0.3); }
+    .portfolio-img { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .p1 { background: linear-gradient(135deg, #0a1628, #0057FF22); }
+    .p2 { background: linear-gradient(135deg, #0a1628, #00A3FF22); }
+    .p3 { background: linear-gradient(135deg, #0a1628, #0057FF33); }
+    .portfolio-info { padding: 20px 24px; background: rgba(255,255,255,0.02); }
+    .portfolio-tag { font-size: 0.75rem; color: var(--bleu-clair); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+    .portfolio-name { font-size: 1rem; font-weight: 600; margin-top: 6px; }
+
+    /* AVIS CLIENTS */
+    .avis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .avis-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 28px; transition: border-color 0.2s; }
+    .avis-card:hover { border-color: rgba(0,87,255,0.3); }
+    .avis-stars { color: #F59E0B; font-size: 0.9rem; margin-bottom: 14px; }
+    .avis-text { font-size: 0.9rem; color: #ccc; line-height: 1.7; margin-bottom: 20px; font-style: italic; font-weight: 300; }
+    .avis-author { display: flex; align-items: center; gap: 12px; }
+    .avis-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--bleu); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: white; }
+    .avis-name { font-weight: 600; font-size: 0.88rem; }
+    .avis-role { font-size: 0.75rem; color: var(--gris); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+    .faq-question:hover { background: rgba(0,87,255,0.06); }
+    .faq-icon { color: var(--bleu-clair); font-size: 1.2rem; transition: transform 0.3s; }
+    .faq-answer { padding: 0 24px 20px; font-size: 0.88rem; color: var(--gris); line-height: 1.7; font-weight: 300; }
+
+    /* BLOG */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
+    .blog-card:hover { transform: translateY(-4px); border-color: rgba(0,87,255,0.3); }
+    .blog-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+    .b1 { background: linear-gradient(135deg, #0a1628, #0057FF22); }
+    .b2 { background: linear-gradient(135deg, #0a1628, #00A3FF22); }
+    .b3 { background: linear-gradient(135deg, #0a1628, #0057FF33); }
+    .blog-info { padding: 20px 24px; }
+    .blog-cat { font-size: 0.72rem; color: var(--bleu-clair); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .blog-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+    .blog-desc { font-size: 0.82rem; color: var(--gris); line-height: 1.6; font-weight: 300; }
+
+    /* CONTACT */
+    .contact-box { background: rgba(0,87,255,0.08); border: 1px solid rgba(0,87,255,0.2); border-radius: 12px; padding: 64px 48px; text-align: center; max-width: 700px; margin: 0 auto; }
+    .contact-box h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 16px; letter-spacing: 1px; }
+    .contact-box p { color: var(--gris); margin-bottom: 36px; font-weight: 300; line-height: 1.7; }
+    .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer { position: relative; z-index: 1; text-align: center; padding: 32px 40px; border-top: 1px solid rgba(255,255,255,0.06); color: var(--gris); font-size: 0.82rem; font-weight: 300; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .section { padding: 70px 24px; }
+      .stats-bar { gap: 40px; padding: 40px 24px; }
+      .contact-box { padding: 40px 24px; }
+      .apropos-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+      .apropos-avatar { margin: 0 auto; }
+      .apropos-tags { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">BALIMA <span>WEB DEVELOPER</span></div>
+    <ul class="nav-links">
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact" class="nav-cta">Me contacter</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div style="position:relative; z-index:1;">
+    <section class="hero">
+      <div class="hero-badge">
+        <div class="dot"></div>
+        Disponible pour de nouveaux projets
+      </div>
+      <h1>Je crée des sites<br>web qui <span class="accent">vendent</span></h1>
+      <p class="hero-sub">Je crée des <strong>sites web personnalisés et professionnels</strong> pour les vendeurs de produits digitaux — formations, ebooks, coaching — pour qu'ils dépendent uniquement d'eux-mêmes.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Démarrer mon projet →</a>
+        <a href="#services" class="btn-secondary">Voir mes services</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Sites adaptés mobile</div></div>
+    <div class="stat"><div class="stat-n">48H</div><div class="stat-l">Délai de livraison moyen</div></div>
+    <div class="stat"><div class="stat-n">0€</div><div class="stat-l">Frais cachés</div></div>
+    <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Support après livraison</div></div>
+  </div>
+
+  <!-- À PROPOS -->
+  <div class="apropos">
+    <section class="section" id="apropos">
+      <div class="section-label">Qui suis-je ?</div>
+      <h2 class="section-title">À propos de moi</h2>
+      <div class="apropos-inner">
+        <div class="apropos-avatar">BM</div>
+        <div>
+          <div class="apropos-name">BALIMA MOUSSA</div>
+          <div class="apropos-role">Développeur Web Freelance · Burkina Faso</div>
+          <p class="apropos-bio">Développeur web freelance basé au Burkina Faso, je me suis spécialisé dans la création de sites web de vente pour les entrepreneurs digitaux. Mon objectif est simple : t'aider à avoir ta propre présence sur Internet, professionnelle et indépendante des réseaux sociaux. Je crée des sites rapides, beaux et efficaces — livrés en 48h.</p>
+          <div class="apropos-tags">
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">Web Design</span>
+            <span class="tag">Pages de vente</span>
+            <span class="tag">Mise en ligne</span>
+            <span class="tag">Burkina Faso 🇧🇫</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-label">Ce que je fais</div>
+    <h2 class="section-title">Mes services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">Page de vente</div>
+        <p class="service-desc">Une page complète et convaincante pour vendre ton produit digital. Titre accrocheur, bénéfices, témoignages, bouton de paiement intégré.</p>
+        <span class="service-price"><s style="color:#555; font-size:0.75rem;">150€</s> → À partir de 60€ 🎉</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">Site vitrine</div>
+        <p class="service-desc">Un site complet 3 à 5 pages pour présenter ton activité, tes offres et tes contacts de manière professionnelle.</p>
+        <span class="service-price"><s style="color:#555; font-size:0.75rem;">250€</s> → À partir de 100€ 🎉</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">Page de capture</div>
+        <p class="service-desc">Une page simple pour collecter les emails de tes prospects et construire ta liste de clients potentiels.</p>
+        <span class="service-price"><s style="color:#555; font-size:0.75rem;">80€</s> → À partir de 30€ 🎉</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">Mise en ligne incluse</div>
+        <p class="service-desc">Je m'occupe de tout : hébergement, mise en ligne. Ton site accessible 24h/24 partout dans le monde.</p>
+        <span class="service-price">Inclus dans chaque projet</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSUS -->
+  <div class="process">
+    <section class="section" id="processus">
+      <div class="section-label">Comment ça marche</div>
+      <h2 class="section-title">Simple et rapide</h2>
+      <div class="process-steps">
+        <div class="step"><div class="step-num">ÉTAPE 01</div><div class="step-title">Tu me contactes</div><p class="step-desc">Tu m'expliques ton projet, ton produit, et ce que tu veux. On échange en 15 minutes.</p></div>
+        <div class="step"><div class="step-num">ÉTAPE 02</div><div class="step-title">Je crée ton site</div><p class="step-desc">Je conçois ton site en 24 à 48h. Tu valides, je corrige si besoin.</p></div>
+        <div class="step"><div class="step-num">ÉTAPE 03</div><div class="step-title">Mise en ligne</div><p class="step-desc">Je publie ton site sur Internet. Tu reçois ton lien et tu commences à vendre.</p></div>
+        <div class="step"><div class="step-num">ÉTAPE 04</div><div class="step-title">Tu vends</div><p class="step-desc">Ton site travaille pour toi 24h/24. Tu te concentres sur tes ventes, pas sur la technique.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <section class="section" id="portfolio">
+    <div class="section-label">Mes réalisations</div>
+    <h2 class="section-title">Portfolio</h2>
+    <div class="portfolio-grid">
+      <a href="https://spontaneous-basbousa-a94702.netlify.app/" target="_blank" class="portfolio-card" style="text-decoration:none; color:inherit;">
+        <div class="portfolio-img p1">🥗</div>
+        <div class="portfolio-info">
+          <div class="portfolio-tag">Coach bien-être</div>
+          <div class="portfolio-name">Site vitrine — Coach Nutrition</div>
+          <div style="margin-top:10px; font-size:0.78rem; color:#4D8FFF;">Voir le site →</div>
+        </div>
+      </a>
+      <a href="https://incredible-gingersnap-865d43.netlify.app/" target="_blank" class="portfolio-card" style="text-decoration:none; color:inherit;">
+        <div class="portfolio-img p2">📘</div>
+        <div class="portfolio-info">
+          <div class="portfolio-tag">Vendeur ebook</div>
+          <div class="portfolio-name">Page de vente — Ebook Investissement</div>
+          <div style="margin-top:10px; font-size:0.78rem; color:#4D8FFF;">Voir le site →</div>
+        </div>
+      </a>
+      <a href="https://delicate-sopapillas-800b76.netlify.app/" target="_blank" class="portfolio-card" style="text-decoration:none; color:inherit;">
+        <div class="portfolio-img p3">🚀</div>
+        <div class="portfolio-info">
+          <div class="portfolio-tag">Formation digitale</div>
+          <div class="portfolio-name">Formation Marketing Digital</div>
+          <div style="margin-top:10px; font-size:0.78rem; color:#4D8FFF;">Voir le site →</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- AVIS CLIENTS -->
+  <div class="process">
+    <section class="section" id="avis">
+      <div class="section-label">Ce qu'ils disent</div>
+      <h2 class="section-title">Avis clients</h2>
+      <div class="avis-grid">
+        <div class="avis-card">
+          <div class="avis-stars">★★★★★</div>
+          <p class="avis-text">"Balima a créé ma page de vente en moins de 48h. Résultat professionnel, clients impressionnés. Je recommande à 100% !"</p>
+          <div class="avis-author">
+            <div class="avis-avatar">AK</div>
+            <div><div class="avis-name">Aminata K.</div><div class="avis-role">Vendeuse de formations</div></div>
+          </div>
+        </div>
+        <div class="avis-card">
+          <div class="avis-stars">★★★★☆</div>
+          <p class="avis-text">"Très réactif, à l'écoute et livraison rapide. Mon site est exactement ce que je voulais. Merci Balima !"</p>
+          <div class="avis-author">
+            <div class="avis-avatar">KD</div>
+            <div><div class="avis-name">Kofi D.</div><div class="avis-role">Coach en développement personnel</div></div>
+          </div>
+        </div>
+        <div class="avis-card">
+          <div class="avis-stars">★★★★★</div>
+          <p class="avis-text">"Mon site est plus beau que ceux de concurrents qui ont payé une agence 10 fois plus cher. Excellent travail !"</p>
+          <div class="avis-author">
+            <div class="avis-avatar">FB</div>
+            <div><div class="avis-name">Fatou B.</div><div class="avis-role">Auteure d'ebook</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="section-label">Questions fréquentes</div>
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">💬 Combien de temps pour créer mon site ? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">En général 24 à 48h après que tu m'aies fourni les informations nécessaires (textes, couleurs, produit). Pour les projets plus complexes, cela peut prendre 3 à 5 jours.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">💬 Comment se passe le paiement ? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">50% au démarrage du projet, 50% à la livraison. Je n'accepte aucun projet sans acompte. Le paiement se fait via Mobile Money ou virement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">💬 Est-ce que mon site sera visible sur mobile ? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">Oui à 100%. Tous mes sites sont optimisés pour mobile, tablette et ordinateur. La majorité de tes visiteurs sont sur téléphone — c'est une priorité.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">💬 Puis-je modifier mon site après livraison ? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">Oui. Je t'accompagne après la livraison pour les petites modifications. Pour des changements importants, un forfait de maintenance peut être proposé.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">💬 Est-ce que tu crées des sites pour tous types de business ? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">Je me spécialise dans les produits digitaux : formations en ligne, ebooks, coaching, consulting. Si tu vends ce type de produit, je suis la bonne personne.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <div class="process">
+    <section class="section" id="blog">
+      <div class="section-label">Conseils & Astuces</div>
+      <h2 class="section-title">Blog</h2>
+      <div class="blog-grid">
+        <a href="article1.html" class="blog-card" style="text-decoration:none; color:inherit;">
+          <div class="blog-img b1">💡</div>
+          <div class="blog-info">
+            <div class="blog-cat">Stratégie</div>
+            <div class="blog-title">Pourquoi vendre sur Facebook ne suffit plus en 2026</div>
+            <p class="blog-desc">Les réseaux sociaux distraient tes clients. Voici pourquoi ton propre site web est indispensable aujourd'hui.</p>
+            <div style="margin-top:12px; font-size:0.78rem; color:#4D8FFF; font-weight:600;">Lire l'article →</div>
+          </div>
+        </a>
+        <a href="article2.html" class="blog-card" style="text-decoration:none; color:inherit;">
+          <div class="blog-img b2">🎯</div>
+          <div class="blog-info">
+            <div class="blog-cat">Conseils</div>
+            <div class="blog-title">5 éléments indispensables d'une page de vente qui convertit</div>
+            <p class="blog-desc">Une page de vente efficace n'est pas qu'une belle page. Découvre les 5 éléments qui font vraiment vendre.</p>
+            <div style="margin-top:12px; font-size:0.78rem; color:#4D8FFF; font-weight:600;">Lire l'article →</div>
+          </div>
+        </a>
+        <a href="article3.html" class="blog-card" style="text-decoration:none; color:inherit;">
+          <div class="blog-img b3">🚀</div>
+          <div class="blog-info">
+            <div class="blog-cat">Inspiration</div>
+            <div class="blog-title">Comment j'ai appris à créer des sites web en partant de zéro</div>
+            <p class="blog-desc">Mon parcours de débutant complet à développeur web freelance. Ce que j'ai appris et ce que tu peux faire aussi.</p>
+            <div style="margin-top:12px; font-size:0.78rem; color:#4D8FFF; font-weight:600;">Lire l'article →</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="contact-box">
+      <h2>Prêt à lancer ton projet ?</h2>
+      <p>Tu as un produit digital à vendre et tu as besoin d'un site professionnel ? Contacte-moi, on en parle gratuitement.</p>
+      <div class="contact-links">
+        <a href="https://wa.me/22607190217" class="btn-primary">💬 WhatsApp</a>
+        <a href="mailto:moussabalima07@gmail.com" class="btn-secondary">✉️ Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Balima Web Developer · Développeur Web Freelance · Burkina Faso 🇧🇫 · Tous droits réservés</p>
+  </footer>
+
+</body>
+</html>
