@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketPro Academy — Formation Marketing Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --violet: #6C3CE1;
+      --violet-clair: #9B6FF5;
+      --rose: #F72585;
+      --blanc: #FFFFFF;
+      --fond: #F8F7FF;
+      --noir: #0F0A1E;
+      --gris: #6B7280;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--blanc); color: var(--noir); font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    /* NAV */
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px; background: white;
+      box-shadow: 0 1px 0 #e5e7eb; position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-weight: 800; font-size: 1.2rem; }
+    .logo span { color: var(--violet); }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-login { font-size: 0.88rem; color: var(--gris); text-decoration: none; }
+    .nav-btn {
+      background: var(--violet); color: white; padding: 10px 22px;
+      border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.88rem;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--noir) 0%, #1a0a3e 100%);
+      color: white; padding: 100px 48px 80px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(ellipse at 30% 40%, rgba(108,60,225,0.3) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 60%, rgba(247,37,133,0.15) 0%, transparent 50%);
+    }
+    .hero-inner { position: relative; max-width: 800px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(108,60,225,0.2); border: 1px solid rgba(108,60,225,0.4);
+      color: var(--violet-clair); padding: 8px 18px; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 600; margin-bottom: 28px;
+    }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.15; margin-bottom: 24px; }
+    h1 .grad { background: linear-gradient(90deg, var(--violet-clair), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); max-width: 540px; margin: 0 auto 40px; line-height: 1.7; font-weight: 300; }
+
+    .hero-stats { display: flex; justify-content: center; gap: 48px; margin-top: 56px; flex-wrap: wrap; }
+    .h-stat { text-align: center; }
+    .h-stat-n { font-size: 1.8rem; font-weight: 800; }
+    .h-stat-l { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+    /* CTA HERO */
+    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-violet {
+      background: var(--violet); color: white; padding: 16px 36px;
+      border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn-violet:hover { background: var(--violet-clair); }
+    .btn-outline {
+      background: transparent; color: white; padding: 16px 36px;
+      border-radius: 8px; font-weight: 500; text-decoration: none; font-size: 0.95rem;
+      border: 1px solid rgba(255,255,255,0.2); transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.5); }
+
+    /* PROGRAMME */
+    .programme { max-width: 1000px; margin: 0 auto; padding: 80px 48px; }
+    .sec-label { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--violet); font-weight: 700; margin-bottom: 10px; }
+    .sec-title { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 12px; }
+    .sec-sub { color: var(--gris); margin-bottom: 48px; font-weight: 300; max-width: 500px; }
+
+    .modules { display: flex; flex-direction: column; gap: 16px; }
+    .module {
+      background: var(--fond); border-radius: 12px; padding: 24px 28px;
+      display: flex; gap: 20px; align-items: center;
+      border: 1px solid #e5e7eb; transition: border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .module:hover { border-color: var(--violet); box-shadow: 0 4px 20px rgba(108,60,225,0.1); }
+    .module-num {
+      width: 48px; height: 48px; border-radius: 10px; min-width: 48px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-clair));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: white; font-size: 0.9rem;
+    }
+    .module-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .module-desc { font-size: 0.82rem; color: var(--gris); }
+    .module-duration { margin-left: auto; font-size: 0.78rem; color: var(--gris); white-space: nowrap; }
+
+    /* POUR QUI */
+    .pour-qui { background: var(--fond); padding: 80px 48px; }
+    .pour-qui-inner { max-width: 900px; margin: 0 auto; }
+    .oui-non { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+    .oui, .non { background: white; border-radius: 12px; padding: 32px; border: 1px solid #e5e7eb; }
+    .oui { border-top: 3px solid #10B981; }
+    .non { border-top: 3px solid #EF4444; }
+    .on-title { font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .on-item { display: flex; gap: 10px; margin-bottom: 12px; font-size: 0.88rem; color: var(--gris); }
+
+    /* PRIX */
+    .prix { max-width: 900px; margin: 0 auto; padding: 80px 48px; text-align: center; }
+    .prix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 48px; }
+    .prix-card { background: var(--fond); border-radius: 16px; padding: 36px 28px; border: 2px solid #e5e7eb; position: relative; }
+    .prix-card.popular { border-color: var(--violet); }
+    .popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--violet); color: white; padding: 4px 16px;
+      border-radius: 20px; font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+    }
+    .prix-name { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .prix-amount { font-size: 2.6rem; font-weight: 800; color: var(--violet); margin: 16px 0 4px; }
+    .prix-period { font-size: 0.82rem; color: var(--gris); margin-bottom: 24px; }
+    .prix-features { list-style: none; text-align: left; margin-bottom: 28px; }
+    .prix-features li { padding: 8px 0; font-size: 0.85rem; border-bottom: 1px solid #e5e7eb; color: var(--gris); }
+    .prix-features li::before { content: "✓ "; color: var(--violet); font-weight: 700; }
+    .btn-prix-full {
+      display: block; width: 100%; background: var(--violet); color: white;
+      padding: 14px; border-radius: 8px; font-weight: 700; text-decoration: none;
+      text-align: center; transition: background 0.2s;
+    }
+    .btn-prix-full:hover { background: var(--violet-clair); }
+
+    footer { background: var(--noir); color: #555; text-align: center; padding: 32px; font-size: 0.82rem; }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 80px 24px 60px; }
+      .programme, .prix { padding: 60px 24px; }
+      .pour-qui { padding: 60px 24px; }
+      .oui-non { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+      .module-duration { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Market<span>Pro</span></div>
+    <div class="nav-right">
+      <a href="#" class="nav-login">Se connecter</a>
+      <a href="#prix" class="nav-btn">Rejoindre la formation</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🚀 Formation en ligne · Accès immédiat</div>
+      <h1>Maîtrise le <span class="grad">Marketing Digital</span> et attire tes premiers clients</h1>
+      <p class="hero-sub">La formation complète pour apprendre à vendre en ligne, créer du contenu qui convertit et développer ton business digital — de zéro à tes premiers 1 000€.</p>
+
+      <div class="hero-cta">
+        <a href="#prix" class="btn-violet">Démarrer maintenant →</a>
+        <a href="#programme" class="btn-outline">Voir le programme</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="h-stat"><div class="h-stat-n">2 400+</div><div class="h-stat-l">Étudiants formés</div></div>
+        <div class="h-stat"><div class="h-stat-n">4.8/5</div><div class="h-stat-l">Note moyenne</div></div>
+        <div class="h-stat"><div class="h-stat-n">32h</div><div class="h-stat-l">De contenu vidéo</div></div>
+        <div class="h-stat"><div class="h-stat-n">Vie</div><div class="h-stat-l">Accès à vie</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="programme" id="programme">
+    <div class="sec-label">Le contenu</div>
+    <h2 class="sec-title">8 modules complets</h2>
+    <p class="sec-sub">De la théorie à la pratique, chaque module est actionnable immédiatement.</p>
+
+    <div class="modules">
+      <div class="module"><div class="module-num">01</div><div><div class="module-title">Les bases du marketing digital</div><div class="module-desc">Comprendre l'écosystème, les plateformes et les fondamentaux</div></div><div class="module-duration">3h 20min</div></div>
+      <div class="module"><div class="module-num">02</div><div><div class="module-title">Créer du contenu qui vend</div><div class="module-desc">Rédaction persuasive, copywriting, accroches efficaces</div></div><div class="module-duration">4h 10min</div></div>
+      <div class="module"><div class="module-num">03</div><div><div class="module-title">Réseaux sociaux & croissance</div><div class="module-desc">Instagram, TikTok, Facebook — stratégies de croissance organique</div></div><div class="module-duration">5h 00min</div></div>
+      <div class="module"><div class="module-num">04</div><div><div class="module-title">Email marketing</div><div class="module-desc">Construire une liste, créer des séquences, automatiser ses ventes</div></div><div class="module-duration">3h 45min</div></div>
+      <div class="module"><div class="module-num">05</div><div><div class="module-title">Publicité payante (Meta Ads)</div><div class="module-desc">Créer et optimiser des campagnes publicitaires rentables</div></div><div class="module-duration">6h 30min</div></div>
+      <div class="module"><div class="module-num">06</div><div><div class="module-title">Vendre ses services en ligne</div><div class="module-desc">Trouver des clients, fixer ses prix, closer des contrats</div></div><div class="module-duration">4h 00min</div></div>
+    </div>
+  </section>
+
+  <section class="pour-qui">
+    <div class="pour-qui-inner">
+      <div class="sec-label">Pour qui ?</div>
+      <h2 class="sec-title">Cette formation est faite pour toi si...</h2>
+      <div class="oui-non">
+        <div class="oui">
+          <div class="on-title">✅ Oui, c'est pour toi</div>
+          <div class="on-item"><span>→</span> Tu veux créer un business en ligne</div>
+          <div class="on-item"><span>→</span> Tu débutes en marketing digital</div>
+          <div class="on-item"><span>→</span> Tu veux attirer plus de clients</div>
+          <div class="on-item"><span>→</span> Tu as un produit ou service à vendre</div>
+        </div>
+        <div class="non">
+          <div class="on-title">❌ Pas pour toi si</div>
+          <div class="on-item"><span>→</span> Tu cherches une solution magique</div>
+          <div class="on-item"><span>→</span> Tu ne veux pas travailler</div>
+          <div class="on-item"><span>→</span> Tu es déjà expert en marketing</div>
+          <div class="on-item"><span>→</span> Tu n'as pas 1h par jour à consacrer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prix" id="prix">
+    <div class="sec-label">Tarifs</div>
+    <h2 class="sec-title">Choisis ton accès</h2>
+    <div class="prix-grid">
+      <div class="prix-card">
+        <div class="prix-name">Essentiel</div>
+        <div class="prix-amount">97€</div>
+        <div class="prix-period">Paiement unique</div>
+        <ul class="prix-features">
+          <li>Accès aux 8 modules</li>
+          <li>Ressources téléchargeables</li>
+          <li>Accès à vie</li>
+        </ul>
+        <a href="#" class="btn-prix-full">Commencer →</a>
+      </div>
+      <div class="prix-card popular">
+        <div class="popular-badge">⭐ Le plus populaire</div>
+        <div class="prix-name">Pro</div>
+        <div class="prix-amount">197€</div>
+        <div class="prix-period">Paiement unique</div>
+        <ul class="prix-features">
+          <li>Tout l'Essentiel</li>
+          <li>Groupe privé WhatsApp</li>
+          <li>1 appel coaching 30min</li>
+          <li>Mises à jour à vie</li>
+        </ul>
+        <a href="#" class="btn-prix-full">Commencer →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 MarketPro Academy · Tous droits réservés · Mentions légales</footer>
+
+</body>
+</html>

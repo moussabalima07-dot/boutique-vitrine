@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fatou Nutrition — Coach Bien-être & Nutrition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vert: #2D6A4F;
+      --vert-clair: #52B788;
+      --vert-pale: #D8F3DC;
+      --creme: #FEFAE0;
+      --marron: #1B1B1B;
+      --gris: #6B7280;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--creme); color: var(--marron); font-family: 'DM Sans', sans-serif; }
+
+    /* NAV */
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 48px; background: white;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--vert); }
+    .nav-btn {
+      background: var(--vert); color: white; padding: 10px 24px;
+      border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 90vh; align-items: center;
+    }
+    .hero-left { padding: 80px 64px; }
+    .hero-right {
+      background: linear-gradient(135deg, #52B788, #2D6A4F);
+      min-height: 90vh;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem; color: rgba(255,255,255,0.2);
+    }
+    .tag {
+      display: inline-block; background: var(--vert-pale);
+      color: var(--vert); padding: 6px 16px; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 600; margin-bottom: 24px;
+    }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.15; margin-bottom: 20px; }
+    h1 em { color: var(--vert-clair); font-style: italic; }
+    .hero-sub { color: var(--gris); font-size: 1rem; line-height: 1.7; margin-bottom: 36px; font-weight: 300; }
+    .btn-green {
+      background: var(--vert); color: white; padding: 16px 36px;
+      border-radius: 30px; text-decoration: none; font-weight: 500;
+      display: inline-block; transition: background 0.2s;
+    }
+    .btn-green:hover { background: var(--vert-clair); }
+
+    /* RÉSULTATS */
+    .results { background: var(--vert); color: white; padding: 60px 48px; }
+    .results-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; text-align: center; }
+    .res-n { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; }
+    .res-l { font-size: 0.85rem; opacity: 0.8; margin-top: 6px; }
+
+    /* OFFRES */
+    .offres { max-width: 1000px; margin: 0 auto; padding: 80px 48px; }
+    .sec-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--vert-clair); font-weight: 600; margin-bottom: 12px; }
+    .sec-title { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 48px; }
+    .offres-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .offre-card {
+      background: white; border-radius: 16px; padding: 36px 28px;
+      border: 1px solid #e5e7eb; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .offre-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .offre-icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .offre-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 10px; }
+    .offre-desc { font-size: 0.88rem; color: var(--gris); line-height: 1.6; margin-bottom: 20px; }
+    .offre-price { font-size: 1.6rem; font-weight: 700; color: var(--vert); }
+    .offre-price span { font-size: 0.85rem; color: var(--gris); font-weight: 400; }
+
+    /* TÉMOIGNAGES */
+    .temoignages { background: white; padding: 80px 48px; }
+    .temo-inner { max-width: 1000px; margin: 0 auto; }
+    .temo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 48px; }
+    .temo-card { background: var(--creme); border-radius: 12px; padding: 28px; }
+    .stars { color: #F59E0B; margin-bottom: 12px; }
+    .temo-text { font-size: 0.9rem; color: var(--marron); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .temo-name { font-weight: 600; font-size: 0.88rem; }
+    .temo-role { font-size: 0.78rem; color: var(--gris); }
+
+    /* CTA */
+    .cta-section { text-align: center; padding: 80px 48px; }
+    .cta-box {
+      max-width: 600px; margin: 0 auto;
+      background: linear-gradient(135deg, var(--vert), var(--vert-clair));
+      border-radius: 20px; padding: 60px 40px; color: white;
+    }
+    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 16px; }
+    .cta-box p { opacity: 0.9; margin-bottom: 32px; font-weight: 300; }
+    .btn-white {
+      background: white; color: var(--vert); padding: 16px 36px;
+      border-radius: 30px; text-decoration: none; font-weight: 600;
+      display: inline-block;
+    }
+
+    footer { text-align: center; padding: 32px; background: var(--marron); color: #888; font-size: 0.82rem; }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 80px 24px 60px; }
+      nav { padding: 16px 24px; }
+      .offres, .temoignages, .cta-section { padding: 60px 24px; }
+      .results { padding: 48px 24px; }
+      .results-inner { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Fatou Nutrition</div>
+    <a href="#contact" class="nav-btn">Réserver une séance</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="tag">🌿 Coach Certifiée</div>
+      <h1>Retrouve ton <em>équilibre</em> et transforme ton corps</h1>
+      <p class="hero-sub">Accompagnement personnalisé en nutrition et bien-être. Je t'aide à atteindre tes objectifs de santé sans régimes draconiens, avec des méthodes naturelles et durables.</p>
+      <a href="#offres" class="btn-green">Voir mes programmes →</a>
+    </div>
+    <div class="hero-right">🌿</div>
+  </section>
+
+  <div class="results">
+    <div class="results-inner">
+      <div><div class="res-n">340+</div><div class="res-l">Clients accompagnés</div></div>
+      <div><div class="res-n">95%</div><div class="res-l">Taux de satisfaction</div></div>
+      <div><div class="res-n">5 ans</div><div class="res-l">D'expérience</div></div>
+    </div>
+  </div>
+
+  <section class="offres" id="offres">
+    <div class="sec-label">Mes programmes</div>
+    <h2 class="sec-title">Choisis ton accompagnement</h2>
+    <div class="offres-grid">
+      <div class="offre-card">
+        <div class="offre-icon">🥗</div>
+        <div class="offre-title">Consultation unique</div>
+        <p class="offre-desc">Bilan nutritionnel complet + plan alimentaire personnalisé sur 4 semaines.</p>
+        <div class="offre-price">45€ <span>/ séance</span></div>
+      </div>
+      <div class="offre-card" style="border-color: var(--vert-clair); border-width: 2px;">
+        <div class="offre-icon">⭐</div>
+        <div class="offre-title">Programme 3 mois</div>
+        <p class="offre-desc">Suivi complet avec consultations hebdomadaires, menus et coaching motivation.</p>
+        <div class="offre-price">297€ <span>/ 3 mois</span></div>
+      </div>
+      <div class="offre-card">
+        <div class="offre-icon">📱</div>
+        <div class="offre-title">Ebook Nutrition</div>
+        <p class="offre-desc">Guide complet : 80 recettes saines, conseils et programme sur 30 jours.</p>
+        <div class="offre-price">19€ <span>accès à vie</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="temoignages">
+    <div class="temo-inner">
+      <div class="sec-label">Témoignages</div>
+      <h2 class="sec-title">Elles ont transformé leur vie</h2>
+      <div class="temo-grid">
+        <div class="temo-card">
+          <div class="stars">★★★★★</div>
+          <p class="temo-text">"J'ai perdu 8 kg en 3 mois sans me priver. Fatou m'a appris à manger sainement et j'adore ça maintenant !"</p>
+          <div class="temo-name">Aminata K.</div>
+          <div class="temo-role">Maman de 2 enfants</div>
+        </div>
+        <div class="temo-card">
+          <div class="stars">★★★★★</div>
+          <p class="temo-text">"Plus d'énergie, meilleur sommeil, peau éclatante. Le programme 3 mois a changé ma vie."</p>
+          <div class="temo-name">Mariam D.</div>
+          <div class="temo-role">Étudiante</div>
+        </div>
+        <div class="temo-card">
+          <div class="stars">★★★★★</div>
+          <p class="temo-text">"Enfin un coach qui comprend mon mode de vie. Les conseils sont pratiques et réalistes."</p>
+          <div class="temo-name">Rokhaya S.</div>
+          <div class="temo-role">Professeure</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section" id="contact">
+    <div class="cta-box">
+      <h2>Prête à changer ta vie ?</h2>
+      <p>Réserve ta consultation gratuite de 20 minutes et on définit ensemble ton programme idéal.</p>
+      <a href="https://wa.me/000000000" class="btn-white">💬 Réserver sur WhatsApp</a>
+    </div>
+  </div>
+
+  <footer>© 2026 Fatou Nutrition · Tous droits réservés</footer>
+
+</body>
+</html>
