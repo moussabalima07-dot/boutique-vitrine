@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pourquoi vendre sur Facebook ne suffit plus en 2026 — Balima Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bleu: #0057FF;
+      --bleu-clair: #4D8FFF;
+      --noir: #080C14;
+      --blanc: #F4F7FF;
+      --gris: #8A94A8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--noir); color: var(--blanc); font-family: 'DM Sans', sans-serif; }
+
+    /* NAV */
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 48px; background: rgba(8,12,20,0.95);
+      border-bottom: 1px solid rgba(0,87,255,0.15);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--blanc); text-decoration: none; }
+    .logo span { color: var(--bleu-clair); }
+    .retour { color: var(--bleu-clair); text-decoration: none; font-size: 0.88rem; font-weight: 500; }
+    .retour:hover { color: var(--blanc); }
+
+    /* ARTICLE */
+    .article-wrapper { max-width: 720px; margin: 0 auto; padding: 60px 48px 100px; }
+
+    /* HEADER ARTICLE */
+    .article-cat { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--bleu-clair); font-weight: 700; margin-bottom: 16px; }
+    .article-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.05; letter-spacing: 1px; margin-bottom: 20px; }
+    .article-meta { display: flex; align-items: center; gap: 20px; color: var(--gris); font-size: 0.82rem; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .meta-author { display: flex; align-items: center; gap: 10px; }
+    .meta-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--bleu); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; color: white; }
+
+    /* CONTENU */
+    .article-content { line-height: 1.9; font-size: 0.98rem; color: #ccc; font-weight: 300; }
+    .article-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--blanc); margin: 48px 0 16px; letter-spacing: 1px; }
+    .article-content h3 { font-size: 1.1rem; font-weight: 700; color: var(--blanc); margin: 32px 0 12px; }
+    .article-content p { margin-bottom: 20px; }
+    .article-content strong { color: var(--blanc); font-weight: 600; }
+    .article-content ul { margin: 16px 0 20px 20px; }
+    .article-content ul li { margin-bottom: 10px; }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(0,87,255,0.08);
+      border-left: 3px solid var(--bleu-clair);
+      padding: 20px 24px;
+      border-radius: 0 8px 8px 0;
+      margin: 32px 0;
+      font-style: italic;
+      color: var(--blanc);
+    }
+
+    /* CTA FINAL */
+    .cta-article {
+      background: rgba(0,87,255,0.1);
+      border: 1px solid rgba(0,87,255,0.25);
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .cta-article h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin-bottom: 12px; letter-spacing: 1px; }
+    .cta-article p { color: var(--gris); margin-bottom: 24px; font-size: 0.9rem; }
+    .btn { display: inline-block; background: var(--bleu); color: white; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
+    .btn:hover { background: var(--bleu-clair); }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 32px; border-top: 1px solid rgba(255,255,255,0.06); color: var(--gris); font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .article-wrapper { padding: 40px 24px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">BALIMA <span>WEB DEVELOPER</span></a>
+    <a href="index.html#blog" class="retour">← Retour au blog</a>
+  </nav>
+
+  <div class="article-wrapper">
+
+    <div class="article-cat">📱 Stratégie digitale</div>
+    <h1 class="article-title">Pourquoi vendre sur Facebook ne suffit plus en 2026</h1>
+
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar">BM</div>
+        <span>Balima Moussa</span>
+      </div>
+      <span>·</span>
+      <span>Mai 2026</span>
+      <span>·</span>
+      <span>5 min de lecture</span>
+    </div>
+
+    <div class="article-content">
+
+      <p>Si tu vends des formations, du coaching ou des ebooks en ligne, tu utilises probablement Facebook, WhatsApp ou TikTok pour trouver tes clients. C'est normal — tout le monde le fait. Mais il y a un problème que peu de gens voient venir.</p>
+
+      <div class="highlight">
+        "Les réseaux sociaux sont construits pour garder les gens sur leur plateforme — pas pour t'aider à vendre."
+      </div>
+
+      <h2>Le problème des réseaux sociaux</h2>
+
+      <p>Imagine la scène. Ton client potentiel scroll sur Facebook. Il voit ton post, il est intéressé. Mais avant qu'il clique sur ton lien, une notification arrive. Un ami l'a tagué dans une vidéo drôle. Et voilà — il t'a oublié. Pour toujours.</p>
+
+      <p>Ce n'est pas sa faute. C'est la nature des réseaux sociaux. Ils sont <strong>construits pour distraire</strong>. Chaque seconde sur leur plateforme est une seconde de plus que tu passes à consommer — pas à acheter.</p>
+
+      <h2>Les 3 vrais dangers de dépendre des réseaux</h2>
+
+      <h3>1. Tu ne possèdes rien</h3>
+      <p>Ta page Facebook, ton compte Instagram, ton profil TikTok — tu n'en es pas propriétaire. Demain matin, si la plateforme décide de bloquer ton compte, tu perds tout. Tes abonnés, ton contenu, tes prospects. En une nuit.</p>
+
+      <h3>2. L'algorithme décide pour toi</h3>
+      <p>Tu postes du contenu mais l'algorithme décide combien de personnes le voient. Certains jours 500 vues, d'autres jours 50. Tu n'as aucun contrôle. Et ces règles changent sans prévenir.</p>
+
+      <h3>3. La concurrence est partout</h3>
+      <p>Sur Facebook, ton client voit ton offre — mais il voit aussi celle de 10 autres concurrents. Les publicités de tes rivaux apparaissent juste à côté de ton post. Tu te bats en permanence pour l'attention.</p>
+
+      <div class="highlight">
+        "Un acheteur qui arrive sur ton site web est focus. Il n'y a plus rien d'autre. Juste lui et ton offre."
+      </div>
+
+      <h2>Ce que change un site web</h2>
+
+      <p>Quand un client clique sur ton site web, il entre dans <strong>ton univers</strong>. Plus de notifications. Plus de distractions. Plus de concurrents visibles. Juste ton produit, ta proposition, ton bouton d'achat.</p>
+
+      <p>Les études montrent qu'un visiteur sur un site web dédié a <strong>3 à 5 fois plus de chances d'acheter</strong> qu'un visiteur qui voit un post sur les réseaux sociaux.</p>
+
+      <p>Pourquoi ? Parce que sur ton site :</p>
+      <ul>
+        <li>Il lit tout ce que tu veux lui montrer</li>
+        <li>Il ne peut pas être distrait par autre chose</li>
+        <li>Il perçoit ton sérieux et ta crédibilité</li>
+        <li>Il peut acheter directement sans quitter la page</li>
+      </ul>
+
+      <h2>La conclusion simple</h2>
+
+      <p>Les réseaux sociaux sont excellents pour <strong>attirer l'attention</strong>. Mais ton site web est là pour <strong>conclure la vente</strong>. Les deux ensemble forment la stratégie parfaite.</p>
+
+      <p>Les vendeurs qui réussissent en 2026 utilisent Facebook et TikTok pour ramener du trafic — et leur site web pour convertir ce trafic en argent.</p>
+
+      <p>Si tu n'as pas encore ton site, tu laisses de l'argent sur la table chaque jour.</p>
+
+      <div class="cta-article">
+        <h3>Tu veux ton site web professionnel ?</h3>
+        <p>Je crée ton site en 48h à partir de 30€. Devis gratuit et sans engagement.</p>
+        <a href="https://wa.me/22607190217" class="btn">💬 Me contacter sur WhatsApp</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Balima Web Developer · Tous droits réservés</p>
+  </footer>
+
+</body>
+</html>

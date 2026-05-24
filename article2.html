@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 éléments indispensables d'une page de vente — Balima Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bleu: #0057FF; --bleu-clair: #4D8FFF; --noir: #080C14; --blanc: #F4F7FF; --gris: #8A94A8; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--noir); color: var(--blanc); font-family: 'DM Sans', sans-serif; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,12,20,0.95); border-bottom: 1px solid rgba(0,87,255,0.15); position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--blanc); text-decoration: none; }
+    .logo span { color: var(--bleu-clair); }
+    .retour { color: var(--bleu-clair); text-decoration: none; font-size: 0.88rem; font-weight: 500; }
+    .retour:hover { color: var(--blanc); }
+    .article-wrapper { max-width: 720px; margin: 0 auto; padding: 60px 48px 100px; }
+    .article-cat { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--bleu-clair); font-weight: 700; margin-bottom: 16px; }
+    .article-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.05; letter-spacing: 1px; margin-bottom: 20px; }
+    .article-meta { display: flex; align-items: center; gap: 20px; color: var(--gris); font-size: 0.82rem; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .meta-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--bleu); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; color: white; }
+    .meta-author { display: flex; align-items: center; gap: 10px; }
+    .article-content { line-height: 1.9; font-size: 0.98rem; color: #ccc; font-weight: 300; }
+    .article-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--blanc); margin: 48px 0 16px; letter-spacing: 1px; }
+    .article-content h3 { font-size: 1.1rem; font-weight: 700; color: var(--blanc); margin: 32px 0 12px; }
+    .article-content p { margin-bottom: 20px; }
+    .article-content strong { color: var(--blanc); font-weight: 600; }
+    .highlight { background: rgba(0,87,255,0.08); border-left: 3px solid var(--bleu-clair); padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 32px 0; font-style: italic; color: var(--blanc); }
+    .element-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-left: 3px solid var(--bleu); border-radius: 0 8px 8px 0; padding: 24px 28px; margin: 20px 0; }
+    .element-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: rgba(0,87,255,0.3); line-height: 1; margin-bottom: 8px; }
+    .element-title { font-size: 1rem; font-weight: 700; color: var(--blanc); margin-bottom: 8px; }
+    .element-desc { font-size: 0.88rem; color: var(--gris); line-height: 1.6; }
+    .cta-article { background: rgba(0,87,255,0.1); border: 1px solid rgba(0,87,255,0.25); border-radius: 12px; padding: 40px; text-align: center; margin-top: 60px; }
+    .cta-article h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin-bottom: 12px; letter-spacing: 1px; }
+    .cta-article p { color: var(--gris); margin-bottom: 24px; font-size: 0.9rem; }
+    .btn { display: inline-block; background: var(--bleu); color: white; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
+    .btn:hover { background: var(--bleu-clair); }
+    footer { text-align: center; padding: 32px; border-top: 1px solid rgba(255,255,255,0.06); color: var(--gris); font-size: 0.8rem; }
+    @media (max-width: 768px) { nav { padding: 16px 24px; } .article-wrapper { padding: 40px 24px 80px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">BALIMA <span>WEB DEVELOPER</span></a>
+    <a href="index.html#blog" class="retour">← Retour au blog</a>
+  </nav>
+
+  <div class="article-wrapper">
+
+    <div class="article-cat">🎯 Conseils</div>
+    <h1 class="article-title">5 éléments indispensables d'une page de vente qui convertit</h1>
+
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar">BM</div>
+        <span>Balima Moussa</span>
+      </div>
+      <span>·</span>
+      <span>Mai 2026</span>
+      <span>·</span>
+      <span>6 min de lecture</span>
+    </div>
+
+    <div class="article-content">
+
+      <p>Tu as créé un super produit. Tu as travaillé dur dessus. Mais quand tu l'as mis en ligne — personne n'achète. Pourquoi ? Dans la majorité des cas, ce n'est pas le produit le problème. C'est la page de vente.</p>
+
+      <p>Une page de vente efficace n'est pas qu'une belle page. C'est une page <strong>construite pour convaincre</strong>. Et pour convaincre, elle doit contenir 5 éléments précis.</p>
+
+      <div class="highlight">
+        "Une page de vente bien construite peut multiplier tes ventes par 3 ou 4 — sans changer ton produit."
+      </div>
+
+      <h2>Les 5 éléments qui font vendre</h2>
+
+      <div class="element-card">
+        <div class="element-num">01</div>
+        <div class="element-title">Un titre qui accroche en 3 secondes</div>
+        <p class="element-desc">Le visiteur décide en 3 secondes s'il reste ou s'il part. Ton titre doit immédiatement répondre à une question : "Qu'est-ce que j'y gagne ?". Exemple : "Apprends à vendre en ligne en 7 jours — même si tu pars de zéro."</p>
+      </div>
+
+      <div class="element-card">
+        <div class="element-num">02</div>
+        <div class="element-title">Les bénéfices — pas les caractéristiques</div>
+        <p class="element-desc">Les gens n'achètent pas un produit. Ils achètent ce que le produit va changer dans leur vie. Ne dis pas "Formation de 8 modules". Dis plutôt "Tu feras tes premières ventes en ligne dès cette semaine." C'est la différence entre une caractéristique et un bénéfice.</p>
+      </div>
+
+      <div class="element-card">
+        <div class="element-num">03</div>
+        <div class="element-title">La preuve sociale — témoignages et résultats</div>
+        <p class="element-desc">Les gens font confiance aux autres gens — pas aux vendeurs. Des témoignages authentiques de clients satisfaits valent plus que n'importe quel argument de vente. Même 2 ou 3 bons témoignages font une énorme différence.</p>
+      </div>
+
+      <div class="element-card">
+        <div class="element-num">04</div>
+        <div class="element-title">Une offre claire avec un prix visible</div>
+        <p class="element-desc">Ne cache jamais ton prix. Un visiteur qui cherche le prix et ne le trouve pas — part. Affiche ton prix clairement, explique ce qui est inclus, et si tu as une promo, montre le prix barré. Ça crée de l'urgence et de la valeur perçue.</p>
+      </div>
+
+      <div class="element-card">
+        <div class="element-num">05</div>
+        <div class="element-title">Un bouton d'achat visible et répété</div>
+        <p class="element-desc">Le bouton "Acheter" ou "Commander" doit apparaître plusieurs fois sur la page — en haut, au milieu et en bas. Le visiteur ne doit jamais chercher comment acheter. Plus c'est facile d'acheter, plus les gens achètent.</p>
+      </div>
+
+      <h2>Le bonus — la garantie</h2>
+
+      <p>Si tu veux vraiment booster tes ventes, ajoute une <strong>garantie de remboursement</strong>. "Satisfait ou remboursé sous 30 jours" réduit le risque perçu par l'acheteur et augmente les conversions de façon significative.</p>
+
+      <p>Les gens hésitent à acheter parce qu'ils ont peur de se tromper. Une garantie leur dit : "Tu ne risques rien." Et paradoxalement, moins ils ont peur — plus ils achètent.</p>
+
+      <div class="highlight">
+        "La page de vente parfaite répond à une seule question dans la tête du visiteur : Pourquoi j'achèterais maintenant ?"
+      </div>
+
+      <h2>Conclusion</h2>
+
+      <p>Une page de vente efficace c'est : un titre fort + des bénéfices clairs + des témoignages + un prix visible + un bouton d'achat répété. Ces 5 éléments ensemble créent une page qui convertit vraiment.</p>
+
+      <p>Si ta page actuelle ne vend pas — vérifie si elle contient ces 5 éléments. Dans la majorité des cas, il en manque au moins un.</p>
+
+      <div class="cta-article">
+        <h3>Tu veux une page de vente qui convertit ?</h3>
+        <p>Je crée ta page de vente professionnelle avec tous ces éléments en 48h — à partir de 60€.</p>
+        <a href="https://wa.me/22607190217" class="btn">💬 Me contacter sur WhatsApp</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Balima Web Developer · Tous droits réservés</p>
+  </footer>
+
+</body>
+</html>

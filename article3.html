@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment j'ai appris à créer des sites web en partant de zéro — Balima Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bleu: #0057FF; --bleu-clair: #4D8FFF; --noir: #080C14; --blanc: #F4F7FF; --gris: #8A94A8; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--noir); color: var(--blanc); font-family: 'DM Sans', sans-serif; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,12,20,0.95); border-bottom: 1px solid rgba(0,87,255,0.15); position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--blanc); text-decoration: none; }
+    .logo span { color: var(--bleu-clair); }
+    .retour { color: var(--bleu-clair); text-decoration: none; font-size: 0.88rem; font-weight: 500; }
+    .retour:hover { color: var(--blanc); }
+    .article-wrapper { max-width: 720px; margin: 0 auto; padding: 60px 48px 100px; }
+    .article-cat { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--bleu-clair); font-weight: 700; margin-bottom: 16px; }
+    .article-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.05; letter-spacing: 1px; margin-bottom: 20px; }
+    .article-meta { display: flex; align-items: center; gap: 20px; color: var(--gris); font-size: 0.82rem; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .meta-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--bleu); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; color: white; }
+    .meta-author { display: flex; align-items: center; gap: 10px; }
+    .article-content { line-height: 1.9; font-size: 0.98rem; color: #ccc; font-weight: 300; }
+    .article-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--blanc); margin: 48px 0 16px; letter-spacing: 1px; }
+    .article-content h3 { font-size: 1.1rem; font-weight: 700; color: var(--blanc); margin: 32px 0 12px; }
+    .article-content p { margin-bottom: 20px; }
+    .article-content strong { color: var(--blanc); font-weight: 600; }
+    .article-content ul { margin: 16px 0 20px 20px; }
+    .article-content ul li { margin-bottom: 10px; }
+    .highlight { background: rgba(0,87,255,0.08); border-left: 3px solid var(--bleu-clair); padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 32px 0; font-style: italic; color: var(--blanc); }
+    .etape-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 24px 28px; margin: 20px 0; display: flex; gap: 20px; align-items: flex-start; }
+    .etape-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: rgba(0,87,255,0.4); line-height: 1; min-width: 48px; }
+    .etape-title { font-size: 1rem; font-weight: 700; color: var(--blanc); margin-bottom: 8px; }
+    .etape-desc { font-size: 0.88rem; color: var(--gris); line-height: 1.6; }
+    .cta-article { background: rgba(0,87,255,0.1); border: 1px solid rgba(0,87,255,0.25); border-radius: 12px; padding: 40px; text-align: center; margin-top: 60px; }
+    .cta-article h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin-bottom: 12px; letter-spacing: 1px; }
+    .cta-article p { color: var(--gris); margin-bottom: 24px; font-size: 0.9rem; }
+    .btn { display: inline-block; background: var(--bleu); color: white; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
+    .btn:hover { background: var(--bleu-clair); }
+    footer { text-align: center; padding: 32px; border-top: 1px solid rgba(255,255,255,0.06); color: var(--gris); font-size: 0.8rem; }
+    @media (max-width: 768px) { nav { padding: 16px 24px; } .article-wrapper { padding: 40px 24px 80px; } .etape-card { flex-direction: column; gap: 8px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">BALIMA <span>WEB DEVELOPER</span></a>
+    <a href="index.html#blog" class="retour">← Retour au blog</a>
+  </nav>
+
+  <div class="article-wrapper">
+
+    <div class="article-cat">🚀 Inspiration</div>
+    <h1 class="article-title">Comment j'ai appris à créer des sites web en partant de zéro</h1>
+
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar">BM</div>
+        <span>Balima Moussa</span>
+      </div>
+      <span>·</span>
+      <span>Mai 2026</span>
+      <span>·</span>
+      <span>7 min de lecture</span>
+    </div>
+
+    <div class="article-content">
+
+      <p>Il y a quelques mois, je ne savais pas ce qu'était une balise HTML. Je ne connaissais pas la différence entre un fichier CSS et un fichier JavaScript. Aujourd'hui je crée des sites web professionnels pour des clients. Voici exactement comment j'ai fait — et pourquoi tu peux faire pareil.</p>
+
+      <div class="highlight">
+        "Le meilleur moment pour commencer était hier. Le deuxième meilleur moment c'est maintenant."
+      </div>
+
+      <h2>Le point de départ — la décision</h2>
+
+      <p>Tout a commencé par une question simple : <strong>comment est-ce que les gens créent des sites web ?</strong> J'avais toujours été attiré par la technologie. Les applications, les logiciels, tout ce qui touche au numérique m'a toujours fasciné.</p>
+
+      <p>Mais comme beaucoup de gens, je pensais que c'était réservé aux experts. Que ça prenait des années d'études. Que c'était trop compliqué pour moi.</p>
+
+      <p>J'avais tort.</p>
+
+      <h2>Les étapes que j'ai suivies</h2>
+
+      <div class="etape-card">
+        <div class="etape-num">01</div>
+        <div>
+          <div class="etape-title">Apprendre le HTML — la structure</div>
+          <p class="etape-desc">Le HTML c'est le squelette d'une page web. J'ai appris que chaque élément visible — titre, paragraphe, image, bouton — correspond à une balise. En quelques heures j'ai créé ma première page. Simple, mais réelle.</p>
+        </div>
+      </div>
+
+      <div class="etape-card">
+        <div class="etape-num">02</div>
+        <div>
+          <div class="etape-title">Apprendre le CSS — le design</div>
+          <p class="etape-desc">Le CSS c'est ce qui rend une page belle. Couleurs, polices, espacements, animations. J'ai compris que le design n'est pas de la magie — c'est juste des propriétés qu'on applique à des éléments. Et ça change tout.</p>
+        </div>
+      </div>
+
+      <div class="etape-card">
+        <div class="etape-num">03</div>
+        <div>
+          <div class="etape-title">Créer mes premiers projets</div>
+          <p class="etape-desc">J'ai créé des sites fictifs pour m'entraîner. Un site pour un coach nutrition imaginaire. Une page de vente pour un ebook. Une formation en marketing digital. Ces projets sont devenus mon portfolio — la preuve concrète de ce que je sais faire.</p>
+        </div>
+      </div>
+
+      <div class="etape-card">
+        <div class="etape-num">04</div>
+        <div>
+          <div class="etape-title">Mettre en ligne et montrer</div>
+          <p class="etape-desc">J'ai découvert Netlify — une plateforme gratuite pour mettre des sites en ligne en quelques minutes. Du jour au lendemain, mes créations avaient une vraie adresse sur Internet. Accessibles partout dans le monde.</p>
+        </div>
+      </div>
+
+      <div class="etape-card">
+        <div class="etape-num">05</div>
+        <div>
+          <div class="etape-title">Proposer mes services</div>
+          <p class="etape-desc">Avec un portfolio en ligne, j'ai commencé à proposer mes services aux vendeurs de produits digitaux. Des gens qui avaient besoin d'un site professionnel mais ne savaient pas comment en créer un.</p>
+        </div>
+      </div>
+
+      <h2>Ce que j'ai appris en chemin</h2>
+
+      <p>La plus grande leçon que j'ai retenue c'est que <strong>l'action bat toujours la théorie</strong>. Tu peux regarder des tutoriels pendant des mois — tu n'apprendras jamais autant qu'en créant un vrai projet.</p>
+
+      <p>J'ai aussi compris que tu n'as pas besoin de tout savoir pour commencer à proposer tes services. Tu as besoin de savoir <strong>suffisamment</strong> pour résoudre le problème du client.</p>
+
+      <div class="highlight">
+        "Tu n'as pas besoin d'être expert pour commencer. Tu as besoin de commencer pour devenir expert."
+      </div>
+
+      <h2>Ce que tu peux faire toi aussi</h2>
+
+      <p>Si tu lis cet article, tu as probablement envie de te lancer dans quelque chose de nouveau. Peut-être créer des sites web. Peut-être vendre quelque chose en ligne. Peut-être juste comprendre comment fonctionne Internet.</p>
+
+      <p>La bonne nouvelle c'est que les outils sont gratuits, les ressources sont partout, et la demande est énorme. Des milliers de vendeurs au Burkina Faso et en Afrique francophone ont besoin d'un site web — et ne savent pas à qui s'adresser.</p>
+
+      <p>C'est exactement là que tu peux te positionner.</p>
+
+      <div class="cta-article">
+        <h3>Tu as besoin d'un site web professionnel ?</h3>
+        <p>Je crée ton site personnalisé en 48h à partir de 30€. Contacte-moi gratuitement.</p>
+        <a href="https://wa.me/22607190217" class="btn">💬 Me contacter sur WhatsApp</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Balima Web Developer · Tous droits réservés</p>
+  </footer>
+
+</body>
+</html>
