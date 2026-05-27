@@ -20,7 +20,25 @@
     
     /* NAV */
     nav { position: fixed; top: 0; width: 100%; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,12,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,87,255,0.15); }
-    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--blanc); }
+    .logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-family:'Bebas Neue',sans-serif;
+font-size:1.4rem;
+letter-spacing:2px;
+color:var(--blanc);
+}
+.logo img{
+width:42px;
+height:42px;
+object-fit:cover;
+border-radius:8px;
+border:1px solid rgba(255,255,255,0.1);
+}
+.logo span{
+color:var(--blanc);
+}
     .logo span { color: var(--bleu-clair); }
     .nav-links { display: flex; gap: 24px; list-style: none; }
     .nav-links a { color: var(--gris); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
@@ -176,7 +194,10 @@
 
   <!-- NAV -->
   <nav>
-    <div class="logo">BALIMA <span>WEB DEVELOPER</span></div>
+    <div class="logo">
+  <img src="images/zIP-r_87U2S3EQZaKZheyg@2k.webp" alt="Balima Logo">
+  <span>BALIMA WEB DEVELOPER</span>
+    </div>
     <button class="hamburger" onclick="toggleMenu()" id="hamburger">☰</button>
     <ul class="nav-links" id="navMenu">
       <li><a href="#apropos" onclick="closeMenu()">À propos</a></li>
