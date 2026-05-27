@@ -189,18 +189,35 @@
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
     /* MOBILE */
-    @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .hero { padding: 100px 24px 60px; }
-      .section { padding: 70px 24px; }
-      .stats-bar { gap: 40px; padding: 40px 24px; }
-      .contact-box { padding: 40px 24px; }
-      .apropos-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
-      .apropos-avatar { margin: 0 auto; }
-      .apropos-tags { justify-content: center; }
-    }
-  </style>
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; right: -240px;
+    width: 240px;
+    height: 100vh;
+    background: rgba(8,12,20,0.98);
+    border-left: 1px solid rgba(0,87,255,0.2);
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px 24px 32px;
+    gap: 20px;
+    z-index: 250;
+    transition: right 0.3s ease;
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a { font-size: 1rem !important; color: var(--blanc) !important; }
+  .hamburger { display: block; }
+  .hero { padding: 100px 24px 60px; }
+  .section { padding: 70px 24px; }
+  .stats-bar { gap: 40px; padding: 40px 24px; }
+  .contact-box { padding: 40px 24px; }
+  .apropos-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+  .apropos-avatar { margin: 0 auto; }
+  .apropos-tags { justify-content: center; }
+}
 </head>
 <body>
   
