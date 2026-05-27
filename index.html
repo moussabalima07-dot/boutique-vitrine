@@ -60,13 +60,40 @@
     gap: 32px;
     z-index: 150;
   }
+  .hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--blanc);
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 300;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; right: -280px;
+    width: 280px;
+    height: 100vh;
+    background: rgba(8,12,20,0.98);
+    border-left: 1px solid rgba(0,87,255,0.2);
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 32px;
+    gap: 28px;
+    z-index: 250;
+    transition: right 0.3s ease;
+  }
 
   .nav-links.open {
-    display: flex;
+    right: 0;
   }
 
   .nav-links a {
-    font-size: 1.2rem !important;
+    font-size: 1rem !important;
     color: var(--blanc) !important;
   }
 
