@@ -46,20 +46,33 @@
   z-index: 200;
 }
 
-@media (max-width: 768px) {
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,87,255,0.12); border: 1px solid rgba(0,87,255,0.3); color: var(--bleu-clair); padding: 8px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 500; margin-bottom: 32px; width: fit-content; animation: fadeUp 0.6s ease both; }
+    .dot { width: 7px; height: 7px; background: var(--bleu-clair); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 10vw, 7rem); line-height: 0.95; letter-spacing: 1px; margin-bottom: 28px; animation: fadeUp 0.6s 0.1s ease both; }
+    h1 .accent { color: transparent; -webkit-text-stroke: 2px var(--bleu-clair); }
+    .hero-sub { font-size: 1.1rem; color: var(--gris); max-width: 520px; line-height: 1.7; margin-bottom: 48px; animation: fadeUp 0.6s 0.2s ease both; font-weight: 300; }
+    .hero-sub strong { color: var(--blanc); font-weight: 500; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+    .btn-primary { background: var(--bleu); color: var(--blanc); padding: 16px 36px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--bleu-clair); transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: var(--blanc); padding: 16px 36px; border-radius: 6px; font-weight: 500; font-size: 0.95rem; text-decoration: none; border: 1px solid rgba(255,255,@media (max-width: 768px) {
   .nav-links {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0; right: -280px;
-    width: 280px;
+    top: 0; right: -240px;
+    width: 240px;
     height: 100vh;
     background: rgba(8,12,20,0.98);
     border-left: 1px solid rgba(0,87,255,0.2);
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
-    padding: 40px 32px;
-    gap: 28px;
+    padding: 20px 24px 32px;
+    gap: 20px;
     z-index: 250;
     transition: right 0.3s ease;
   }
@@ -76,20 +89,7 @@
   .hamburger {
     display: block;
   }
-}
-    /* HERO */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,87,255,0.12); border: 1px solid rgba(0,87,255,0.3); color: var(--bleu-clair); padding: 8px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 500; margin-bottom: 32px; width: fit-content; animation: fadeUp 0.6s ease both; }
-    .dot { width: 7px; height: 7px; background: var(--bleu-clair); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
-    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 10vw, 7rem); line-height: 0.95; letter-spacing: 1px; margin-bottom: 28px; animation: fadeUp 0.6s 0.1s ease both; }
-    h1 .accent { color: transparent; -webkit-text-stroke: 2px var(--bleu-clair); }
-    .hero-sub { font-size: 1.1rem; color: var(--gris); max-width: 520px; line-height: 1.7; margin-bottom: 48px; animation: fadeUp 0.6s 0.2s ease both; font-weight: 300; }
-    .hero-sub strong { color: var(--blanc); font-weight: 500; }
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-    .btn-primary { background: var(--bleu); color: var(--blanc); padding: 16px 36px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; }
-    .btn-primary:hover { background: var(--bleu-clair); transform: translateY(-2px); }
-    .btn-secondary { background: transparent; color: var(--blanc); padding: 16px 36px; border-radius: 6px; font-weight: 500; font-size: 0.95rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); transition: border-color 0.2s, transform 0.2s; }
+    }255,0.15); transition: border-color 0.2s, transform 0.2s; }
     .btn-secondary:hover { border-color: var(--bleu-clair); transform: translateY(-2px); }
 
     /* STATS */
@@ -556,6 +556,15 @@ TES VENTES.
     menu.classList.remove('open');
     btn.textContent = '☰';
   }
+
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('navMenu');
+    const btn = document.getElementById('hamburger');
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.remove('open');
+      btn.textContent = '☰';
+    }
+  });
 </script>
 </body>
 </html>
