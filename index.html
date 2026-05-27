@@ -1,489 +1,282 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balima Web Developer — Développeur Web Freelance</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balima Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bleu: #0057FF;
-      --bleu-clair: #4D8FFF;
-      --noir: #080C14;
-      --blanc: #F4F7FF;
-      --gris: #8A94A8;
+    :root{
+      --bg:#080C14;
+      --bg2:#0C1220;
+      --text:#F4F7FF;
+      --muted:#8A94A8;
+      --blue:#0057FF;
+      --blue2:#4D8FFF;
+      --gold:#D8B26A;
+      --orange:#FF7900;
+      --line:rgba(255,255,255,.08);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--noir); color: var(--blanc); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
-    body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 20% 20%, rgba(0,87,255,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(77,143,255,0.08) 0%, transparent 50%); z-index: 0; pointer-events: none; }
-    
-    nav { position: fixed; top: 0; width: 100%; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,12,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,87,255,0.15); }
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:12px;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(0,87,255,.14), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,121,0,.08), transparent 28%),
+        var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+    .nav{
+      position:sticky;top:0;z-index:1000;
+      backdrop-filter:blur(14px);
+      background:rgba(8,12,20,.78);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      min-height:72px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.5px}
+    .brand img{width:40px;height:40px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+    .brand span{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px}
+    .menu{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .menu a{color:var(--muted);font-size:.92rem}
+    .menu a:hover{color:var(--text)}
+    .menu .cta{
+      background:linear-gradient(135deg, rgba(0,87,255,.95), rgba(77,143,255,.92));
+      color:#fff;padding:10px 16px;border-radius:12px;font-weight:700;
+      box-shadow:0 10px 30px rgba(0,87,255,.25);
+    }
+
+    .hero{padding:78px 0 42px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(0,87,255,.12);border:1px solid rgba(77,143,255,.25);
+      color:var(--blue2);padding:8px 14px;border-radius:999px;font-size:.84rem;
+      margin-bottom:22px
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--blue2);animation:pulse 2s infinite}
+    @keyframes pulse{50%{transform:scale(.75);opacity:.55}}
+    h1{
       font-family:'Bebas Neue',sans-serif;
-      font-size:1.4rem;
-      letter-spacing:2px;
-      color:var(--blanc);
+      font-size:clamp(3rem,8vw,6.8rem);
+      line-height:.92;letter-spacing:1px;margin-bottom:18px;
     }
-    .logo img{
-      width:42px;
-      height:42px;
-      object-fit:cover;
-      border-radius:8px;
-      border:1px solid rgba(255,255,255,0.1);
+    .accent{-webkit-text-stroke:2px var(--blue2);color:transparent}
+    .hero p{max-width:680px;color:var(--muted);line-height:1.8;font-size:1.02rem}
+    .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:14px 22px;border-radius:14px;font-weight:700;border:1px solid transparent;
+      transition:.25s ease;cursor:pointer
     }
-    .logo span{
-      color:var(--bleu-clair);
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      background:linear-gradient(135deg, rgba(0,87,255,.98), rgba(77,143,255,.95));
+      color:#fff;box-shadow:0 14px 32px rgba(0,87,255,.22)
     }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { color: var(--gris); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--blanc); }
-    .nav-cta { background: var(--bleu); color: var(--blanc) !important; padding: 10px 22px; border-radius: 6px; font-weight: 600 !important; }
-    .hamburger { display: none; background: none; border: 2px solid rgba(0,87,255,0.4); color: var(--blanc); font-size: 1.4rem; cursor: pointer; z-index: 300; width: 40px; height: 40px; border-radius: 6px; align-items: center; justify-content: center; }
-
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,87,255,0.12); border: 1px solid rgba(0,87,255,0.3); color: var(--bleu-clair); padding: 8px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 500; margin-bottom: 32px; width: fit-content; animation: fadeUp 0.6s ease both; }
-    .dot { width: 7px; height: 7px; background: var(--bleu-clair); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
-    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 10vw, 7rem); line-height: 0.95; letter-spacing: 1px; margin-bottom: 28px; animation: fadeUp 0.6s 0.1s ease both; }
-    h1 .accent { color: transparent; -webkit-text-stroke: 2px var(--bleu-clair); }
-    .hero-sub { font-size: 1.1rem; color: var(--gris); max-width: 520px; line-height: 1.7; margin-bottom: 48px; animation: fadeUp 0.6s 0.2s ease both; font-weight: 300; }
-    .hero-sub strong { color: var(--blanc); font-weight: 500; }
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-    .btn-primary { background: var(--bleu); color: var(--blanc); padding: 16px 36px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background 0.2s, transform 0.2s; }
-    .btn-primary:hover { background: var(--bleu-clair); transform: translateY(-2px); }
-    .btn-secondary { background: transparent; color: var(--blanc); padding: 16px 36px; border-radius: 6px; font-weight: 500; font-size: 0.95rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); transition: border-color 0.2s, transform 0.2s; }
-    .btn-secondary:hover { border-color: var(--bleu-clair); transform: translateY(-2px); }
-
-    .stats-bar { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: center; gap: 80px; padding: 48px 40px; flex-wrap: wrap; }
-    .stat { text-align: center; }
-    .stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--bleu-clair); letter-spacing: 1px; }
-    .stat-l { font-size: 0.82rem; color: var(--gris); margin-top: 4px; font-weight: 300; }
-
-    .section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
-    .section-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--bleu-clair); font-weight: 600; margin-bottom: 16px; }
-    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; margin-bottom: 60px; letter-spacing: 1px; }
-
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
-    .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 40px 32px; transition: background 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
-    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--bleu); transform: scaleX(0); transition: transform 0.3s; }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-card:hover { background: rgba(0,87,255,0.06); border-color: rgba(0,87,255,0.2); }
-    .service-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(0,87,255,0.2); line-height: 1; margin-bottom: 20px; }
-    .service-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 12px; }
-    .service-desc { font-size: 0.88rem; color: var(--gris); line-height: 1.7; margin-bottom: 24px; }
-    .service-price { display: inline-block; background: rgba(0,87,255,0.12); color: var(--bleu-clair); padding: 6px 14px; border-radius: 4px; font-size: 0.82rem; font-weight: 600; }
-
-    .process { background: rgba(0,87,255,0.04); border-top: 1px solid rgba(0,87,255,0.1); border-bottom: 1px solid rgba(0,87,255,0.1); }
-    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-    .step { display: flex; flex-direction: column; gap: 14px; }
-    .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; color: var(--bleu-clair); letter-spacing: 2px; }
-    .step-title { font-size: 1rem; font-weight: 600; }
-    .step-desc { font-size: 0.85rem; color: var(--gris); line-height: 1.6; font-weight: 300; }
-
-    .apropos { background: rgba(0,87,255,0.04); border-top: 1px solid rgba(0,87,255,0.1); border-bottom: 1px solid rgba(0,87,255,0.1); }
-    .apropos-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: center; }
-    .apropos-avatar { width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, var(--bleu), var(--bleu-clair)); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: white; letter-spacing: 2px; border: 3px solid rgba(77,143,255,0.3); }
-    .apropos-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 2px; margin-bottom: 8px; }
-    .apropos-role { color: var(--bleu-clair); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
-    .apropos-bio { color: var(--gris); font-size: 0.92rem; line-height: 1.8; font-weight: 300; margin-bottom: 24px; }
-    .apropos-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-    .tag { background: rgba(0,87,255,0.1); border: 1px solid rgba(0,87,255,0.2); color: var(--bleu-clair); padding: 6px 14px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; }
-
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .portfolio-card { border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.3s, border-color 0.3s; }
-    .portfolio-card:hover { transform: translateY(-4px); border-color: rgba(0,87,255,0.3); }
-    .portfolio-img { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
-    .p1 { background: linear-gradient(135deg, #0a1628, #0057FF22); }
-    .p2 { background: linear-gradient(135deg, #0a1628, #00A3FF22); }
-    .p3 { background: linear-gradient(135deg, #0a1628, #0057FF33); }
-    .portfolio-info { padding: 20px 24px; background: rgba(255,255,255,0.02); }
-    .portfolio-tag { font-size: 0.75rem; color: var(--bleu-clair); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-    .portfolio-name { font-size: 1rem; font-weight: 600; margin-top: 6px; }
-
-    .avis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .avis-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 28px; }
-    .avis-stars { color: #F59E0B; font-size: 0.9rem; margin-bottom: 14px; }
-    .avis-text { font-size: 0.9rem; color: #ccc; line-height: 1.7; margin-bottom: 20px; font-style: italic; font-weight: 300; }
-    .avis-author { display: flex; align-items: center; gap: 12px; }
-    .avis-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--bleu); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: white; }
-    .avis-name { font-weight: 600; font-size: 0.88rem; }
-    .avis-role { font-size: 0.75rem; color: var(--gris); }
-
-    .faq-list { display: flex; flex-direction: column; gap: 16px; }
-    .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; }
-    .faq-question { padding: 20px 24px; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-    .faq-question:hover { background: rgba(0,87,255,0.06); }
-    .faq-icon { color: var(--bleu-clair); font-size: 1.2rem; }
-    .faq-answer { padding: 0 24px 20px; font-size: 0.88rem; color: var(--gris); line-height: 1.7; font-weight: 300; }
-
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
-    .blog-card:hover { transform: translateY(-4px); border-color: rgba(0,87,255,0.3); }
-    .blog-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
-    .b1 { background: linear-gradient(135deg, #0a1628, #0057FF22); }
-    .b2 { background: linear-gradient(135deg, #0a1628, #00A3FF22); }
-    .b3 { background: linear-gradient(135deg, #0a1628, #0057FF33); }
-    .blog-info { padding: 20px 24px; }
-    .blog-cat { font-size: 0.72rem; color: var(--bleu-clair); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-    .blog-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
-    .blog-desc { font-size: 0.82rem; color: var(--gris); line-height: 1.6; font-weight: 300; }
-
-    .contact-box { background: rgba(0,87,255,0.08); border: 1px solid rgba(0,87,255,0.2); border-radius: 12px; padding: 64px 48px; text-align: center; max-width: 700px; margin: 0 auto; }
-    .contact-box h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 16px; letter-spacing: 1px; }
-    .contact-box p { color: var(--gris); margin-bottom: 36px; font-weight: 300; line-height: 1.7; }
-    .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
-    footer { position: relative; z-index: 1; text-align: center; padding: 32px 40px; border-top: 1px solid rgba(255,255,255,0.06); color: var(--gris); font-size: 0.82rem; font-weight: 300; }
-
-    /* BIBLIOTHÈQUE */
-    .library-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-      gap:24px;
+    .btn-secondary{
+      background:rgba(255,255,255,.03);border-color:var(--line);color:var(--text)
     }
-    .ebook-card{
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
-      overflow:hidden;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+
+    .section{padding:82px 0}
+    .label{
+      font-size:.76rem;letter-spacing:3px;text-transform:uppercase;color:var(--blue2);
+      margin-bottom:14px;font-weight:700
     }
-    .ebook-card:hover{
-      transform: translateY(-6px);
-      border-color: rgba(77,143,255,0.35);
+    .title{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(2rem,4.5vw,3.6rem);
+      line-height:1;margin-bottom:26px;letter-spacing:1px
+    }
+
+    .grid-3{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px
+    }
+    .card{
+      background:rgba(255,255,255,.03);border:1px solid var(--line);
+      border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.25)
     }
     .ebook-img{
       width:100%;
-      height:320px;
+      height:270px;
       object-fit:cover;
+      object-position:center;
       display:block;
+      background:#111;
     }
-    .ebook-content{
-      padding:20px;
-      text-align:center;
-    }
-    .ebook-content h3{
-      font-size:1.05rem;
-      font-weight:700;
-      margin-bottom:10px;
-    }
-    .ebook-content p{
-      font-size:0.85rem;
-      color:#8A94A8;
-      margin-bottom:16px;
-      line-height:1.6;
-    }
-    .ebook-price-old{
-      font-size:0.78rem;
-      color:#555;
-      text-decoration:line-through;
-      margin-bottom:6px;
-    }
-    .ebook-price-new{
-      font-size:0.92rem;
-      color:#4D8FFF;
-      font-weight:700;
-      margin-bottom:14px;
-    }
+    .card-body{padding:20px;text-align:center}
+    .card h3{font-size:1.08rem;margin-bottom:10px}
+    .card p{font-size:.86rem;color:var(--muted);line-height:1.7;margin-bottom:14px}
+    .old{color:#666;text-decoration:line-through;font-size:.78rem}
+    .new{color:var(--blue2);font-size:1rem;font-weight:800;margin-top:4px}
     .ebook-btn{
-      display:inline-block;
-      background: linear-gradient(135deg, rgba(216,178,106,0.20), rgba(245,215,154,0.10));
-      border: 1px solid rgba(216,178,106,0.35);
-      color:#F7DEAB;
-      padding:12px 22px;
-      border-radius: 10px;
-      font-weight:700;
-      text-decoration:none;
-      box-shadow: 0 0 22px rgba(216,178,106,0.18);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      width:100%;margin-top:14px;
+      padding:12px 18px;border-radius:12px;font-weight:800;
+      background:linear-gradient(135deg, rgba(216,178,106,.18), rgba(255,121,0,.12));
+      border:1px solid rgba(216,178,106,.4);color:#F7DEAB;
+      box-shadow:0 0 22px rgba(216,178,106,.14);
+      transition:.25s ease
     }
-    .ebook-btn:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(216,178,106,0.30);
+    .ebook-btn:hover{transform:translateY(-2px);box-shadow:0 0 34px rgba(216,178,106,.24)}
+
+    .payment{
+      background:linear-gradient(180deg, rgba(255,121,0,.05), rgba(0,87,255,.05));
+      border-top:1px solid rgba(255,121,0,.10);
+      border-bottom:1px solid rgba(0,87,255,.10)
+    }
+    .payment-box{
+      max-width:820px;margin:0 auto;
+      background:rgba(255,255,255,.03);border:1px solid var(--line);
+      border-radius:22px;padding:28px;text-align:center
+    }
+    .pay-top{
+      display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px;flex-wrap:wrap
+    }
+    .pay-logo{
+      width:46px;height:46px;object-fit:contain;border-radius:12px;
+      background:#fff;padding:4px
+    }
+    .pay-row{
+      margin:12px 0;color:var(--muted);font-size:1rem;line-height:1.8
+    }
+    .pay-row strong{color:var(--text)}
+    .pay-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+
+    .whats{
+      background:linear-gradient(135deg, rgba(37,211,102,.95), rgba(28,168,79,.92));
+      color:#fff;box-shadow:0 14px 32px rgba(37,211,102,.18)
     }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .footer{
+      padding:28px 0 42px;
+      color:var(--muted);text-align:center;border-top:1px solid var(--line)
+    }
 
-    @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      .hamburger { display: flex; }
-      .nav-links {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 0; right: -260px;
-        width: 260px;
-        height: 100vh;
-        background: rgba(8,12,20,0.98);
-        border-left: 1px solid rgba(0,87,255,0.2);
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: 80px 28px 32px;
-        gap: 8px;
-        z-index: 250;
-        transition: right 0.3s ease;
-      }
-      .nav-links.open { right: 0; }
-      .nav-links li { width: 100%; }
-      .nav-links a { font-size: 1rem !important; color: var(--blanc) !important; display: block; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-      .nav-cta { background: var(--bleu) !important; border-radius: 6px; padding: 12px 16px !important; text-align: center; border-bottom: none !important; margin-top: 8px; }
-      .hero { padding: 100px 24px 60px; }
-      .section { padding: 70px 24px; }
-      .stats-bar { gap: 40px; padding: 40px 24px; }
-      .contact-box { padding: 40px 24px; }
-      .apropos-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
-      .apropos-avatar { margin: 0 auto; }
-      .apropos-tags { justify-content: center; }
+    @media (max-width: 900px){
+      .grid-3{grid-template-columns:1fr}
+      .menu{display:none}
+      .hero{padding-top:56px}
     }
   </style>
 </head>
 <body>
-
-  <nav>
-    <div class="logo">
-      <img src="zIP-r_87U2S3EQZaKZheyg@2k.webp" alt="Balima Web Developer">
-      <span>BALIMA WEB DEVELOPER</span>
+  <div class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <img src="zIP-r_87U2S3EQZaKZheyg@2k.webp" alt="Balima Web Developer">
+        <span>BALIMA WEB DEVELOPER</span>
+      </div>
+      <div class="menu">
+        <a href="#bibliotheque">Bibliothèque</a>
+        <a href="#paiement">Paiement</a>
+        <a href="#contact" class="cta">Me contacter</a>
+      </div>
     </div>
-    <button class="hamburger" onclick="toggleMenu()" id="hamburger">☰</button>
-    <ul class="nav-links" id="navMenu">
-      <li><a href="#apropos" onclick="closeMenu()">À propos</a></li>
-      <li><a href="#services" onclick="closeMenu()">Services</a></li>
-      <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
-      <li><a href="#bibliotheque" onclick="closeMenu()">Bibliothèque</a></li>
-      <li><a href="#avis" onclick="closeMenu()">Avis</a></li>
-      <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
-      <li><a href="#blog" onclick="closeMenu()">Blog</a></li>
-      <li><a href="#contact" onclick="closeMenu()" class="nav-cta">Me contacter</a></li>
-    </ul>
-  </nav>
+  </div>
 
-  <div style="position:relative; z-index:1;">
-    <section class="hero">
-      <div class="hero-badge"><div class="dot"></div>Disponible pour de nouveaux projets</div>
+  <header class="hero">
+    <div class="wrap">
+      <div class="badge"><span class="dot"></span>Disponible pour de nouveaux projets</div>
       <h1>TON SITE WEB.<br>TES CLIENTS.<br><span class="accent">TES VENTES.</span></h1>
-      <p class="hero-sub">J'aide les <strong>entrepreneurs</strong> à vendre, convaincre et développer leur activité grâce à leur propre <strong>site web</strong>.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary">Démarrer mon projet →</a>
-        <a href="#services" class="btn-secondary">Voir mes services</a>
-      </div>
-    </section>
-  </div>
-
-  <div class="stats-bar">
-    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Sites adaptés mobile</div></div>
-    <div class="stat"><div class="stat-n">48H</div><div class="stat-l">Délai de livraison moyen</div></div>
-    <div class="stat"><div class="stat-n">0€</div><div class="stat-l">Frais cachés</div></div>
-    <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Support après livraison</div></div>
-  </div>
-
-  <div class="apropos">
-    <section class="section" id="apropos">
-      <div class="section-label">Qui suis-je ?</div>
-      <h2 class="section-title">À propos de moi</h2>
-      <div class="apropos-inner">
-        <div class="apropos-avatar">BM</div>
-        <div>
-          <div class="apropos-name">BALIMA MOUSSA</div>
-          <div class="apropos-role">Développeur Web Freelance · Burkina Faso</div>
-          <p class="apropos-bio">Développeur web freelance basé au Burkina Faso, je me suis spécialisé dans la création de sites web de vente pour les entrepreneurs digitaux. Mon objectif est simple : t'aider à avoir ta propre présence sur Internet, professionnelle et indépendante des réseaux sociaux. Je crée des sites rapides, beaux et efficaces — livrés en 48h.</p>
-          <div class="apropos-tags">
-            <span class="tag">HTML / CSS</span>
-            <span class="tag">Web Design</span>
-            <span class="tag">Pages de vente</span>
-            <span class="tag">Mise en ligne</span>
-            <span class="tag">Burkina Faso 🇧🇫</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <section class="section" id="services">
-    <div class="section-label">Ce que je fais</div>
-    <h2 class="section-title">Mes services</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <div class="service-title">Page de vente</div>
-        <p class="service-desc">Une page complète et convaincante pour vendre ton produit digital. Titre accrocheur, bénéfices, témoignages, bouton de paiement intégré.</p>
-        <span class="service-price"><s style="color:#555; font-size:0.75rem;">150€</s> → À partir de 60€ 🎉</span>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <div class="service-title">Site vitrine</div>
-        <p class="service-desc">Un site complet 3 à 5 pages pour présenter ton activité, tes offres et tes contacts de manière professionnelle.</p>
-        <span class="service-price"><s style="color:#555; font-size:0.75rem;">250€</s> → À partir de 100€ 🎉</span>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <div class="service-title">Page de capture</div>
-        <p class="service-desc">Une page simple pour collecter les emails de tes prospects et construire ta liste de clients potentiels.</p>
-        <span class="service-price"><s style="color:#555; font-size:0.75rem;">80€</s> → À partir de 30€ 🎉</span>
-      </div>
-      <div class="service-card">
-        <div class="service-num">04</div>
-        <div class="service-title">Mise en ligne incluse</div>
-        <p class="service-desc">Je m'occupe de tout : hébergement, mise en ligne. Ton site accessible 24h/24 partout dans le monde.</p>
-        <span class="service-price">Inclus dans chaque projet</span>
-      </div>
-      <div class="service-card" style="border-color: rgba(212,160,23,0.4); background: rgba(212,160,23,0.04);">
-        <div class="service-num" style="color: rgba(212,160,23,0.3);">⭐</div>
-        <div class="service-title" style="color: #D4A017;">BOOST ULTIME — Pack Tout-inclus</div>
-        <p class="service-desc">Site vitrine + Page de vente + Page de capture + SEO de base + Bouton WhatsApp intégré. Tout ce dont tu as besoin pour vendre en ligne dès le premier jour.</p>
-        <span class="service-price" style="background: rgba(212,160,23,0.15); color: #D4A017;">À partir de 180€</span>
+      <p>J’aide les entrepreneurs à vendre plus vite avec des sites propres, rapides et pensés pour convertir.</p>
+      <div class="actions">
+        <a href="#bibliotheque" class="btn btn-primary">Voir la bibliothèque</a>
+        <a href="#paiement" class="btn btn-secondary">Payer Orange Money</a>
       </div>
     </div>
-  </section>
+  </header>
 
-  <div class="process">
-    <section class="section" id="processus">
-      <div class="section-label">Comment ça marche</div>
-      <h2 class="section-title">Simple et rapide</h2>
-      <div class="process-steps">
-        <div class="step"><div class="step-num">ÉTAPE 01</div><div class="step-title">Tu me contactes</div><p class="step-desc">Tu m'expliques ton projet, ton produit, et ce que tu veux. On échange en 15 minutes.</p></div>
-        <div class="step"><div class="step-num">ÉTAPE 02</div><div class="step-title">Je crée ton site</div><p class="step-desc">Je conçois ton site en 24 à 48h. Tu valides, je corrige si besoin.</p></div>
-        <div class="step"><div class="step-num">ÉTAPE 03</div><div class="step-title">Mise en ligne</div><p class="step-desc">Je publie ton site sur Internet. Tu reçois ton lien et tu commences à vendre.</p></div>
-        <div class="step"><div class="step-num">ÉTAPE 04</div><div class="step-title">Tu vends</div><p class="step-desc">Ton site travaille pour toi 24h/24. Tu te concentres sur tes ventes, pas sur la technique.</p></div>
-      </div>
-    </section>
-  </div>
+  <section class="section" id="bibliotheque">
+    <div class="wrap">
+      <div class="label">Ressources & Savoirs</div>
+      <div class="title">La Bibliothèque du Succès</div>
 
-  <section class="section" id="portfolio">
-    <div class="section-label">Mes réalisations</div>
-    <h2 class="section-title">Portfolio</h2>
-    <div class="portfolio-grid">
-      <a href="coach-nutrition-1.html" target="_blank" class="portfolio-card" style="text-decoration:none; color:inherit;">
-        <div class="portfolio-img p1">🥗</div>
-        <div class="portfolio-info"><div class="portfolio-tag">Coach bien-être</div><div class="portfolio-name">Site vitrine — Coach Nutrition</div><div style="margin-top:10px; font-size:0.78rem; color:#4D8FFF;">Voir le site →</div></div>
-      </a>
-      <a href="ebook-investissement-1.html" target="_blank" class="portfolio-card" style="text-decoration:none; color:inherit;">
-        <div class="portfolio-img p2">📘</div>
-        <div class="portfolio-info"><div class="portfolio-tag">Vendeur ebook</div><div class="portfolio-name">Page de vente — Ebook Investissement</div><div style="margin-top:10px; font-size:0.78rem; color:#4D8FFF;">Voir le site →</div></div>
-      </a>
-      <a href="formation-marketing-1.html" target="_blank" class="portfolio-card" style="text-decoration:none; color:inherit;">
-        <div class="portfolio-img p3">🚀</div>
-        <div class="portfolio-info"><div class="portfolio-tag">Formation digitale</div><div class="portfolio-name">Formation Marketing Digital</div><div style="margin-top:10px; font-size:0.78rem; color:#4D8FFF;">Voir le site →</div></div>
-      </a>
-    </div>
-  </section>
-
-  <div class="process">
-    <section class="section" id="bibliotheque">
-      <div class="section-label">Ressources & Savoirs</div>
-      <h2 class="section-title">La Bibliothèque du Succès</h2>
-      <div class="library-grid">
-        <div class="ebook-card">
+      <div class="grid-3">
+        <article class="card">
           <img src="image_1779908400452.jpeg" alt="Mindset de Réussite Africaine" class="ebook-img">
-          <div class="ebook-content">
+          <div class="card-body">
             <h3>Mindset de Réussite Africaine</h3>
-            <p>Penser grand, agir juste, réussir sans limites. L'esprit · La discipline · L'héritage.</p>
-            <div class="ebook-price-old">15 000 XOF</div>
-            <div class="ebook-price-new">10 000 XOF</div>
-            <a href="#" class="ebook-btn">Acheter</a>
+            <p>Penser grand, agir juste, réussir sans limites. L’esprit, la discipline, l’héritage.</p>
+            <div class="old">15 000 XOF</div>
+            <div class="new">10 000 XOF</div>
+            <a href="#paiement" class="ebook-btn">Acheter</a>
           </div>
-        </div>
+        </article>
 
-        <div class="ebook-card">
+        <article class="card">
           <img src="image_1779908664552.jpeg" alt="Maîtriser ses Émotions" class="ebook-img">
-          <div class="ebook-content">
+          <div class="card-body">
             <h3>Maîtriser ses Émotions</h3>
-            <p>L'art de garder le contrôle et prendre les bonnes décisions. Équilibre intérieur, succès extérieur.</p>
-            <div class="ebook-price-old">15 000 XOF</div>
-            <div class="ebook-price-new">10 000 XOF</div>
-            <a href="#" class="ebook-btn">Acheter</a>
+            <p>L’art de garder le contrôle et prendre les bonnes décisions avec calme.</p>
+            <div class="old">15 000 XOF</div>
+            <div class="new">10 000 XOF</div>
+            <a href="#paiement" class="ebook-btn">Acheter</a>
           </div>
-        </div>
+        </article>
 
-        <div class="ebook-card">
+        <article class="card">
           <img src="image_1779908832127.jpeg" alt="Vendre en Ligne de A à Z" class="ebook-img">
-          <div class="ebook-content">
+          <div class="card-body">
             <h3>Vendre en Ligne de A à Z</h3>
-            <p>Le guide complet pour lancer, développer et automatiser votre business en ligne.</p>
-            <div class="ebook-price-old">15 000 XOF</div>
-            <div class="ebook-price-new">10 000 XOF</div>
-            <a href="#" class="ebook-btn">Acheter</a>
+            <p>Le guide complet pour lancer, développer et automatiser ton business en ligne.</p>
+            <div class="old">15 000 XOF</div>
+            <div class="new">10 000 XOF</div>
+            <a href="#paiement" class="ebook-btn">Acheter</a>
           </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section payment" id="paiement">
+    <div class="wrap">
+      <div class="label">Paiement</div>
+      <div class="title">Paiement Orange Money</div>
+
+      <div class="payment-box">
+        <div class="pay-top">
+          <img src="orange-money-logo.png" alt="Orange Money" class="pay-logo">
+          <strong>Paiement sécurisé par Orange Money</strong>
+        </div>
+
+        <div class="pay-row">
+          Montant : <strong>10 000 XOF</strong>
+        </div>
+        <div class="pay-row">
+          Numéro Orange Money : <strong>+226 XX XX XX XX</strong>
+        </div>
+        <div class="pay-row">
+          Après paiement, clique sur <strong>J’ai payé</strong> pour m’envoyer une confirmation WhatsApp.
+        </div>
+
+        <div class="pay-actions">
+          <a href="https://wa.me/22607190217?text=J'ai%20pay%C3%A9%20un%20ebook%20de%20la%20Biblioth%C3%A8que%20du%20Succ%C3%A8s.%20Voici%20ma%20preuve." class="btn whats">J’ai payé</a>
+          <a href="https://wa.me/22607190217" class="btn btn-secondary">Poser une question</a>
         </div>
       </div>
-      <p style="text-align:center; color:#8A94A8; font-size:0.85rem; margin-top:40px;">📲 Pour commander — contacte moi sur WhatsApp : <strong style="color:#4D8FFF;">+226 07 19 02 17</strong></p>
-    </section>
-  </div>
-
-  <section class="section" id="avis">
-    <div class="section-label">Ce qu'ils disent</div>
-    <h2 class="section-title">Avis clients</h2>
-    <div class="avis-grid">
-      <div class="avis-card"><div class="avis-stars">★★★★★</div><p class="avis-text">"Balima a créé ma page de vente en moins de 48h. Résultat professionnel, clients impressionnés. Je recommande à 100% !"</p><div class="avis-author"><div class="avis-avatar">AK</div><div><div class="avis-name">Aminata K.</div><div class="avis-role">Vendeuse de formations</div></div></div></div>
-      <div class="avis-card"><div class="avis-stars">★★★★☆</div><p class="avis-text">"Très réactif, à l'écoute et livraison rapide. Mon site est exactement ce que je voulais. Merci Balima !"</p><div class="avis-author"><div class="avis-avatar">KD</div><div><div class="avis-name">Kofi D.</div><div class="avis-role">Coach en développement personnel</div></div></div></div>
-      <div class="avis-card"><div class="avis-stars">★★★★★</div><p class="avis-text">"Mon site est plus beau que ceux de concurrents qui ont payé une agence 10 fois plus cher. Excellent travail !"</p><div class="avis-author"><div class="avis-avatar">FB</div><div><div class="avis-name">Fatou B.</div><div class="avis-role">Auteure d'ebook</div></div></div></div>
     </div>
   </section>
-
-  <section class="section" id="faq">
-    <div class="section-label">Questions fréquentes</div>
-    <h2 class="section-title">FAQ</h2>
-    <div class="faq-list">
-      <div class="faq-item"><div class="faq-question">💬 Combien de temps pour créer mon site ? <span class="faq-icon">+</span></div><div class="faq-answer">En général 24 à 48h après que tu m'aies fourni les informations nécessaires. Pour les projets plus complexes, cela peut prendre 3 à 5 jours.</div></div>
-      <div class="faq-item"><div class="faq-question">💬 Comment se passe le paiement ? <span class="faq-icon">+</span></div><div class="faq-answer">50% au démarrage du projet, 50% à la livraison. Je n'accepte aucun projet sans acompte. Le paiement se fait via Mobile Money ou virement.</div></div>
-      <div class="faq-item"><div class="faq-question">💬 Est-ce que mon site sera visible sur mobile ? <span class="faq-icon">+</span></div><div class="faq-answer">Oui à 100%. Tous mes sites sont optimisés pour mobile, tablette et ordinateur.</div></div>
-      <div class="faq-item"><div class="faq-question">💬 Puis-je modifier mon site après livraison ? <span class="faq-icon">+</span></div><div class="faq-answer">Oui. Je t'accompagne après la livraison pour les petites modifications.</div></div>
-      <div class="faq-item"><div class="faq-question">💬 Est-ce que tu crées des sites pour tous types de business ? <span class="faq-icon">+</span></div><div class="faq-answer">Je me spécialise dans les produits digitaux : formations en ligne, ebooks, coaching, consulting. Si tu vends ce type de produit, je suis la bonne personne.</div></div>
-    </div>
-  </section>
-
-  <div class="process">
-    <section class="section" id="blog">
-      <div class="section-label">Conseils & Astuces</div>
-      <h2 class="section-title">Blog</h2>
-      <div class="blog-grid">
-        <a href="article1.html" class="blog-card" style="text-decoration:none; color:inherit;"><div class="blog-img b1">💡</div><div class="blog-info"><div class="blog-cat">Stratégie</div><div class="blog-title">Pourquoi vendre sur Facebook ne suffit plus en 2026</div><p class="blog-desc">Les réseaux sociaux distraient tes clients. Voici pourquoi ton propre site web est indispensable aujourd'hui.</p><div style="margin-top:12px; font-size:0.78rem; color:#4D8FFF; font-weight:600;">Lire l'article →</div></div></a>
-        <a href="article2.html" class="blog-card" style="text-decoration:none; color:inherit;"><div class="blog-img b2">🎯</div><div class="blog-info"><div class="blog-cat">Conseils</div><div class="blog-title">5 éléments indispensables d'une page de vente qui convertit</div><p class="blog-desc">Une page de vente efficace n'est pas qu'une belle page. Découvre les 5 éléments qui font vraiment vendre.</p><div style="margin-top:12px; font-size:0.78rem; color:#4D8FFF; font-weight:600;">Lire l'article →</div></div></a>
-        <a href="article3.html" class="blog-card" style="text-decoration:none; color:inherit;"><div class="blog-img b3">🚀</div><div class="blog-info"><div class="blog-cat">Inspiration</div><div class="blog-title">Comment j'ai appris à créer des sites web en partant de zéro</div><p class="blog-desc">Mon parcours de débutant complet à développeur web freelance.</p><div style="margin-top:12px; font-size:0.78rem; color:#4D8FFF; font-weight:600;">Lire l'article →</div></div></a>
-      </div>
-    </section>
-  </div>
 
   <section class="section" id="contact">
-    <div class="contact-box">
-      <h2>Prêt à lancer ton projet ?</h2>
-      <p>Tu as un produit digital à vendre et tu as besoin d'un site professionnel ? Contacte-moi, on en parle gratuitement.</p>
-      <div class="contact-links">
-        <a href="https://wa.me/22607190217" class="btn-primary">💬 WhatsApp</a>
-        <a href="mailto:moussabalima07@gmail.com" class="btn-secondary">✉️ Email</a>
+    <div class="wrap">
+      <div class="label">Contact</div>
+      <div class="title">Me joindre</div>
+      <div class="payment-box">
+        <div class="pay-row">WhatsApp : <strong>+226 07 19 02 17</strong></div>
+        <div class="pay-row">Email : <strong>moussabalima07@gmail.com</strong></div>
       </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2026 Balima Web Developer · Développeur Web Freelance · Burkina Faso 🇧🇫 · Tous droits réservés</p>
+  <footer class="footer">
+    <div class="wrap">© 2026 Balima Web Developer · Burkina Faso 🇧🇫</div>
   </footer>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('navMenu');
-      const btn = document.getElementById('hamburger');
-      menu.classList.toggle('open');
-      btn.textContent = menu.classList.contains('open') ? '✕' : '☰';
-    }
-    function closeMenu() {
-      const menu = document.getElementById('navMenu');
-      const btn = document.getElementById('hamburger');
-      menu.classList.remove('open');
-      btn.textContent = '☰';
-    }
-    document.addEventListener('click', function(e) {
-      const menu = document.getElementById('navMenu');
-      const btn = document.getElementById('hamburger');
-      if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-        menu.classList.remove('open');
-        btn.textContent = '☰';
-      }
-    });
-  </script>
 </body>
-  </html>
+</html>
