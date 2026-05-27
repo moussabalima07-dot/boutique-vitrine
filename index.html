@@ -18,35 +18,32 @@
     body { background: var(--noir); color: var(--blanc); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
     body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 20% 20%, rgba(0,87,255,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(77,143,255,0.08) 0%, transparent 50%); z-index: 0; pointer-events: none; }
     
-    /* NAV */
     nav { position: fixed; top: 0; width: 100%; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,12,20,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,87,255,0.15); }
     .logo{
-display:flex;
-align-items:center;
-gap:12px;
-font-family:'Bebas Neue',sans-serif;
-font-size:1.4rem;
-letter-spacing:2px;
-color:var(--blanc);
-}
-.logo img{
-width:42px;
-height:42px;
-object-fit:cover;
-border-radius:8px;
-border:1px solid rgba(255,255,255,0.1);
-}
-.logo span{
-color:var(--blanc);
-}
-    .logo span { color: var(--bleu-clair); }
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:'Bebas Neue',sans-serif;
+      font-size:1.4rem;
+      letter-spacing:2px;
+      color:var(--blanc);
+    }
+    .logo img{
+      width:42px;
+      height:42px;
+      object-fit:cover;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+    .logo span{
+      color:var(--bleu-clair);
+    }
     .nav-links { display: flex; gap: 24px; list-style: none; }
     .nav-links a { color: var(--gris); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--blanc); }
     .nav-cta { background: var(--bleu); color: var(--blanc) !important; padding: 10px 22px; border-radius: 6px; font-weight: 600 !important; }
     .hamburger { display: none; background: none; border: 2px solid rgba(0,87,255,0.4); color: var(--blanc); font-size: 1.4rem; cursor: pointer; z-index: 300; width: 40px; height: 40px; border-radius: 6px; align-items: center; justify-content: center; }
 
-    /* HERO */
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,87,255,0.12); border: 1px solid rgba(0,87,255,0.3); color: var(--bleu-clair); padding: 8px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 500; margin-bottom: 32px; width: fit-content; animation: fadeUp 0.6s ease both; }
     .dot { width: 7px; height: 7px; background: var(--bleu-clair); border-radius: 50%; animation: pulse 2s infinite; }
@@ -61,18 +58,15 @@ color:var(--blanc);
     .btn-secondary { background: transparent; color: var(--blanc); padding: 16px 36px; border-radius: 6px; font-weight: 500; font-size: 0.95rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); transition: border-color 0.2s, transform 0.2s; }
     .btn-secondary:hover { border-color: var(--bleu-clair); transform: translateY(-2px); }
 
-    /* STATS */
     .stats-bar { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: center; gap: 80px; padding: 48px 40px; flex-wrap: wrap; }
     .stat { text-align: center; }
     .stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--bleu-clair); letter-spacing: 1px; }
     .stat-l { font-size: 0.82rem; color: var(--gris); margin-top: 4px; font-weight: 300; }
 
-    /* SECTIONS */
     .section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
     .section-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--bleu-clair); font-weight: 600; margin-bottom: 16px; }
     .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; margin-bottom: 60px; letter-spacing: 1px; }
 
-    /* SERVICES */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
     .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 40px 32px; transition: background 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
     .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--bleu); transform: scaleX(0); transition: transform 0.3s; }
@@ -83,7 +77,6 @@ color:var(--blanc);
     .service-desc { font-size: 0.88rem; color: var(--gris); line-height: 1.7; margin-bottom: 24px; }
     .service-price { display: inline-block; background: rgba(0,87,255,0.12); color: var(--bleu-clair); padding: 6px 14px; border-radius: 4px; font-size: 0.82rem; font-weight: 600; }
 
-    /* PROCESSUS */
     .process { background: rgba(0,87,255,0.04); border-top: 1px solid rgba(0,87,255,0.1); border-bottom: 1px solid rgba(0,87,255,0.1); }
     .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
     .step { display: flex; flex-direction: column; gap: 14px; }
@@ -91,7 +84,6 @@ color:var(--blanc);
     .step-title { font-size: 1rem; font-weight: 600; }
     .step-desc { font-size: 0.85rem; color: var(--gris); line-height: 1.6; font-weight: 300; }
 
-    /* À PROPOS */
     .apropos { background: rgba(0,87,255,0.04); border-top: 1px solid rgba(0,87,255,0.1); border-bottom: 1px solid rgba(0,87,255,0.1); }
     .apropos-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: center; }
     .apropos-avatar { width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, var(--bleu), var(--bleu-clair)); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: white; letter-spacing: 2px; border: 3px solid rgba(77,143,255,0.3); }
@@ -101,7 +93,6 @@ color:var(--blanc);
     .apropos-tags { display: flex; flex-wrap: wrap; gap: 10px; }
     .tag { background: rgba(0,87,255,0.1); border: 1px solid rgba(0,87,255,0.2); color: var(--bleu-clair); padding: 6px 14px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; }
 
-    /* PORTFOLIO */
     .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
     .portfolio-card { border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.3s, border-color 0.3s; }
     .portfolio-card:hover { transform: translateY(-4px); border-color: rgba(0,87,255,0.3); }
@@ -113,7 +104,6 @@ color:var(--blanc);
     .portfolio-tag { font-size: 0.75rem; color: var(--bleu-clair); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
     .portfolio-name { font-size: 1rem; font-weight: 600; margin-top: 6px; }
 
-    /* POUR QUI */
     .avis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
     .avis-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 28px; }
     .avis-stars { color: #F59E0B; font-size: 0.9rem; margin-bottom: 14px; }
@@ -123,7 +113,6 @@ color:var(--blanc);
     .avis-name { font-weight: 600; font-size: 0.88rem; }
     .avis-role { font-size: 0.75rem; color: var(--gris); }
 
-    /* FAQ */
     .faq-list { display: flex; flex-direction: column; gap: 16px; }
     .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; }
     .faq-question { padding: 20px 24px; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
@@ -131,7 +120,6 @@ color:var(--blanc);
     .faq-icon { color: var(--bleu-clair); font-size: 1.2rem; }
     .faq-answer { padding: 0 24px 20px; font-size: 0.88rem; color: var(--gris); line-height: 1.7; font-weight: 300; }
 
-    /* BLOG */
     .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
     .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
     .blog-card:hover { transform: translateY(-4px); border-color: rgba(0,87,255,0.3); }
@@ -144,19 +132,83 @@ color:var(--blanc);
     .blog-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
     .blog-desc { font-size: 0.82rem; color: var(--gris); line-height: 1.6; font-weight: 300; }
 
-    /* CONTACT */
     .contact-box { background: rgba(0,87,255,0.08); border: 1px solid rgba(0,87,255,0.2); border-radius: 12px; padding: 64px 48px; text-align: center; max-width: 700px; margin: 0 auto; }
     .contact-box h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 16px; letter-spacing: 1px; }
     .contact-box p { color: var(--gris); margin-bottom: 36px; font-weight: 300; line-height: 1.7; }
     .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-    /* FOOTER */
     footer { position: relative; z-index: 1; text-align: center; padding: 32px 40px; border-top: 1px solid rgba(255,255,255,0.06); color: var(--gris); font-size: 0.82rem; font-weight: 300; }
 
-    /* ANIMATIONS */
+    /* BIBLIOTHÈQUE */
+    .library-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:24px;
+    }
+    .ebook-card{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      overflow:hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+    }
+    .ebook-card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(77,143,255,0.35);
+    }
+    .ebook-img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      display:block;
+    }
+    .ebook-content{
+      padding:20px;
+      text-align:center;
+    }
+    .ebook-content h3{
+      font-size:1.05rem;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+    .ebook-content p{
+      font-size:0.85rem;
+      color:#8A94A8;
+      margin-bottom:16px;
+      line-height:1.6;
+    }
+    .ebook-price-old{
+      font-size:0.78rem;
+      color:#555;
+      text-decoration:line-through;
+      margin-bottom:6px;
+    }
+    .ebook-price-new{
+      font-size:0.92rem;
+      color:#4D8FFF;
+      font-weight:700;
+      margin-bottom:14px;
+    }
+    .ebook-btn{
+      display:inline-block;
+      background: linear-gradient(135deg, rgba(216,178,106,0.20), rgba(245,215,154,0.10));
+      border: 1px solid rgba(216,178,106,0.35);
+      color:#F7DEAB;
+      padding:12px 22px;
+      border-radius: 10px;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow: 0 0 22px rgba(216,178,106,0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .ebook-btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(216,178,106,0.30);
+    }
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* MOBILE */
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
       .hamburger { display: flex; }
@@ -192,11 +244,10 @@ color:var(--blanc);
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <div class="logo">
-  <img src="zIP-r_87U2S3EQZaKZheyg@2k.webp">
-  <span>BALIMA WEB DEVELOPER</span>
+      <img src="zIP-r_87U2S3EQZaKZheyg@2k.webp" alt="Balima Web Developer">
+      <span>BALIMA WEB DEVELOPER</span>
     </div>
     <button class="hamburger" onclick="toggleMenu()" id="hamburger">☰</button>
     <ul class="nav-links" id="navMenu">
@@ -211,7 +262,6 @@ color:var(--blanc);
     </ul>
   </nav>
 
-  <!-- HERO -->
   <div style="position:relative; z-index:1;">
     <section class="hero">
       <div class="hero-badge"><div class="dot"></div>Disponible pour de nouveaux projets</div>
@@ -224,7 +274,6 @@ color:var(--blanc);
     </section>
   </div>
 
-  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Sites adaptés mobile</div></div>
     <div class="stat"><div class="stat-n">48H</div><div class="stat-l">Délai de livraison moyen</div></div>
@@ -232,7 +281,6 @@ color:var(--blanc);
     <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Support après livraison</div></div>
   </div>
 
-  <!-- À PROPOS -->
   <div class="apropos">
     <section class="section" id="apropos">
       <div class="section-label">Qui suis-je ?</div>
@@ -255,7 +303,6 @@ color:var(--blanc);
     </section>
   </div>
 
-  <!-- SERVICES -->
   <section class="section" id="services">
     <div class="section-label">Ce que je fais</div>
     <h2 class="section-title">Mes services</h2>
@@ -293,7 +340,6 @@ color:var(--blanc);
     </div>
   </section>
 
-  <!-- PROCESSUS -->
   <div class="process">
     <section class="section" id="processus">
       <div class="section-label">Comment ça marche</div>
@@ -307,7 +353,6 @@ color:var(--blanc);
     </section>
   </div>
 
-  <!-- PORTFOLIO -->
   <section class="section" id="portfolio">
     <div class="section-label">Mes réalisations</div>
     <h2 class="section-title">Portfolio</h2>
@@ -326,76 +371,59 @@ color:var(--blanc);
       </a>
     </div>
   </section>
-  
-<!-- BIBLIOTHÈQUE -->
-<div class="process">
-  <section class="section" id="bibliotheque">
-    <div class="section-label">Ressources & Savoirs</div>
-    <h2 class="section-title">La Bibliothèque du Succès</h2>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px;">
 
-      <div style="border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.03); transition:transform 0.3s;">
-        <img src="image_1779908400452.jpeg" alt="Mindset" style="width:100%; height:320px; object-fit:cover; display:block;">
-        <div style="padding:20px; text-align:center;">
-          <div style="font-size:1.05rem; font-weight:600; margin-bottom:10px;">Mindset de Réussite Africaine</div>
-          <p style="font-size:0.85rem; color:#8A94A8; margin-bottom:16px; line-height:1.6;">Penser grand, agir juste, réussir sans limites. L'esprit · La discipline · L'héritage.</p>
-          <div style="font-size:0.78rem; color:#555; text-decoration:line-through; margin-bottom:6px;">15 000 XOF</div>
-          <span style="background:rgba(0,87,255,0.12); color:#4D8FFF; padding:8px 16px; border-radius:4px; font-size:0.82rem; font-weight:600;">🏷️ Prix promotionnel : 10 000 XOF</span>
-        </div>
-      </div>
-
-      <div style="border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.03); transition:transform 0.3s;">
-        <img src="image_1779908664552.jpeg" alt="Emotions" style="width:100%; height:320px; object-fit:cover; display:block;">
-        <div style="padding:20px; text-align:center;">
-          <div style="font-size:1.05rem; font-weight:600; margin-bottom:10px;">Maîtriser ses Émotions</div>
-          <p style="font-size:0.85rem; color:#8A94A8; margin-bottom:16px; line-height:1.6;">L'art de garder le contrôle et prendre les bonnes décisions. Équilibre intérieur, succès extérieur.</p>
-          <div style="font-size:0.78rem; color:#555; text-decoration:line-through; margin-bottom:6px;">15 000 XOF</div>
-          <span style="background:rgba(0,87,255,0.12); color:#4D8FFF; padding:8px 16px; border-radius:4px; font-size:0.82rem; font-weight:600;">🏷️ Prix promotionnel : 10 000 XOF</span>
-        </div>
-      </div>
-
-      <div style="border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.03); transition:transform 0.3s;">
-        <img src="image_1779908832127.jpeg" alt="Vendre" style="width:100%; height:320px; object-fit:cover; display:block;">
-        <div style="padding:20px; text-align:center;">
-          <div style="font-size:1.05rem; font-weight:600; margin-bottom:10px;">Vendre en Ligne de A à Z</div>
-          <p style="font-size:0.85rem; color:#8A94A8; margin-bottom:16px; line-height:1.6;">Le guide complet pour lancer, développer et automatiser votre business en ligne.</p>
-          <div style="font-size:0.78rem; color:#555; text-decoration:line-through; margin-bottom:6px;">15 000 XOF</div>
-          <span style="background:rgba(0,87,255,0.12); color:#4D8FFF; padding:8px 16px; border-radius:4px; font-size:0.82rem; font-weight:600;">🏷️ Prix promotionnel : 10 000 XOF</span>
-        </div>
-      </div>
-
-    </div>
-    <p style="text-align:center; color:#8A94A8; font-size:0.85rem; margin-top:40px;">📲 Pour commander — contacte moi sur WhatsApp : <strong style="color:#4D8FFF;">+226 07 19 02 17</strong></p>
-  </section>
-</div>   
-  <!-- POUR QUI -->
-  <section class="section" id="pourqui">
-    <div class="section-label">Tu es concerné ?</div>
-    <h2 class="section-title">Ce site est fait pour toi si...</h2>
-    <div class="services-grid">
-      <div class="service-card"><div class="service-num">🎯</div><div class="service-title">Coach & Consultant</div><p class="service-desc">Tu accompagnes des clients mais tu n'as pas de vitrine en ligne ? Un site te rend crédible et attire des clients qui te cherchent.</p></div>
-      <div class="service-card"><div class="service-num">🛒</div><div class="service-title">Vendeur e-commerce</div><p class="service-desc">Tu vends des produits physiques ou digitaux ? Une page de vente dédiée convertit bien mieux qu'un simple post Facebook.</p></div>
-      <div class="service-card"><div class="service-num">📚</div><div class="service-title">Auteur & Créateur</div><p class="service-desc">Tu as écrit un livre, créé un ebook ou du contenu à vendre ? Je te crée une page de vente qui met ton œuvre en valeur.</p></div>
-      <div class="service-card"><div class="service-num">🎓</div><div class="service-title">Formateur & Prof particulier</div><p class="service-desc">Tu donnes des cours ou des formations ? Un site professionnel te distingue des autres et rassure tes futurs élèves.</p></div>
-      <div class="service-card"><div class="service-num">🏪</div><div class="service-title">Commerçant</div><p class="service-desc">Tu as une boutique physique ? Un site web t'ouvre à des clients au-delà de ton quartier — partout dans le pays.</p></div>
-      <div class="service-card"><div class="service-num">💼</div><div class="service-title">Freelance & Services pro</div><p class="service-desc">Tu proposes des services ? Un portfolio en ligne te permet de montrer ton travail et d'attirer des clients sérieux.</p></div>
-    </div>
-  </section>
-
-  <!-- AVIS -->
   <div class="process">
-    <section class="section" id="avis">
-      <div class="section-label">Ce qu'ils disent</div>
-      <h2 class="section-title">Avis clients</h2>
-      <div class="avis-grid">
-        <div class="avis-card"><div class="avis-stars">★★★★★</div><p class="avis-text">"Balima a créé ma page de vente en moins de 48h. Résultat professionnel, clients impressionnés. Je recommande à 100% !"</p><div class="avis-author"><div class="avis-avatar">AK</div><div><div class="avis-name">Aminata K.</div><div class="avis-role">Vendeuse de formations</div></div></div></div>
-        <div class="avis-card"><div class="avis-stars">★★★★☆</div><p class="avis-text">"Très réactif, à l'écoute et livraison rapide. Mon site est exactement ce que je voulais. Merci Balima !"</p><div class="avis-author"><div class="avis-avatar">KD</div><div><div class="avis-name">Kofi D.</div><div class="avis-role">Coach en développement personnel</div></div></div></div>
-        <div class="avis-card"><div class="avis-stars">★★★★★</div><p class="avis-text">"Mon site est plus beau que ceux de concurrents qui ont payé une agence 10 fois plus cher. Excellent travail !"</p><div class="avis-author"><div class="avis-avatar">FB</div><div><div class="avis-name">Fatou B.</div><div class="avis-role">Auteure d'ebook</div></div></div></div>
+    <section class="section" id="bibliotheque">
+      <div class="section-label">Ressources & Savoirs</div>
+      <h2 class="section-title">La Bibliothèque du Succès</h2>
+      <div class="library-grid">
+        <div class="ebook-card">
+          <img src="image_1779908400452.jpeg" alt="Mindset de Réussite Africaine" class="ebook-img">
+          <div class="ebook-content">
+            <h3>Mindset de Réussite Africaine</h3>
+            <p>Penser grand, agir juste, réussir sans limites. L'esprit · La discipline · L'héritage.</p>
+            <div class="ebook-price-old">15 000 XOF</div>
+            <div class="ebook-price-new">10 000 XOF</div>
+            <a href="#" class="ebook-btn">Acheter</a>
+          </div>
+        </div>
+
+        <div class="ebook-card">
+          <img src="image_1779908664552.jpeg" alt="Maîtriser ses Émotions" class="ebook-img">
+          <div class="ebook-content">
+            <h3>Maîtriser ses Émotions</h3>
+            <p>L'art de garder le contrôle et prendre les bonnes décisions. Équilibre intérieur, succès extérieur.</p>
+            <div class="ebook-price-old">15 000 XOF</div>
+            <div class="ebook-price-new">10 000 XOF</div>
+            <a href="#" class="ebook-btn">Acheter</a>
+          </div>
+        </div>
+
+        <div class="ebook-card">
+          <img src="image_1779908832127.jpeg" alt="Vendre en Ligne de A à Z" class="ebook-img">
+          <div class="ebook-content">
+            <h3>Vendre en Ligne de A à Z</h3>
+            <p>Le guide complet pour lancer, développer et automatiser votre business en ligne.</p>
+            <div class="ebook-price-old">15 000 XOF</div>
+            <div class="ebook-price-new">10 000 XOF</div>
+            <a href="#" class="ebook-btn">Acheter</a>
+          </div>
+        </div>
       </div>
+      <p style="text-align:center; color:#8A94A8; font-size:0.85rem; margin-top:40px;">📲 Pour commander — contacte moi sur WhatsApp : <strong style="color:#4D8FFF;">+226 07 19 02 17</strong></p>
     </section>
   </div>
 
-  <!-- FAQ -->
+  <section class="section" id="avis">
+    <div class="section-label">Ce qu'ils disent</div>
+    <h2 class="section-title">Avis clients</h2>
+    <div class="avis-grid">
+      <div class="avis-card"><div class="avis-stars">★★★★★</div><p class="avis-text">"Balima a créé ma page de vente en moins de 48h. Résultat professionnel, clients impressionnés. Je recommande à 100% !"</p><div class="avis-author"><div class="avis-avatar">AK</div><div><div class="avis-name">Aminata K.</div><div class="avis-role">Vendeuse de formations</div></div></div></div>
+      <div class="avis-card"><div class="avis-stars">★★★★☆</div><p class="avis-text">"Très réactif, à l'écoute et livraison rapide. Mon site est exactement ce que je voulais. Merci Balima !"</p><div class="avis-author"><div class="avis-avatar">KD</div><div><div class="avis-name">Kofi D.</div><div class="avis-role">Coach en développement personnel</div></div></div></div>
+      <div class="avis-card"><div class="avis-stars">★★★★★</div><p class="avis-text">"Mon site est plus beau que ceux de concurrents qui ont payé une agence 10 fois plus cher. Excellent travail !"</p><div class="avis-author"><div class="avis-avatar">FB</div><div><div class="avis-name">Fatou B.</div><div class="avis-role">Auteure d'ebook</div></div></div></div>
+    </div>
+  </section>
+
   <section class="section" id="faq">
     <div class="section-label">Questions fréquentes</div>
     <h2 class="section-title">FAQ</h2>
@@ -408,7 +436,6 @@ color:var(--blanc);
     </div>
   </section>
 
-  <!-- BLOG -->
   <div class="process">
     <section class="section" id="blog">
       <div class="section-label">Conseils & Astuces</div>
@@ -421,7 +448,6 @@ color:var(--blanc);
     </section>
   </div>
 
-  <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="contact-box">
       <h2>Prêt à lancer ton projet ?</h2>
@@ -433,7 +459,6 @@ color:var(--blanc);
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 Balima Web Developer · Développeur Web Freelance · Burkina Faso 🇧🇫 · Tous droits réservés</p>
   </footer>
@@ -460,6 +485,5 @@ color:var(--blanc);
       }
     });
   </script>
-
 </body>
-</html>
+  </html>
